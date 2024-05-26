@@ -14,6 +14,7 @@ function MyComponent(){
 
     const incrementAge = () =>{
         setAge(age + 1)
+
     }
 
     const toggleEmployedStatus = () =>{
