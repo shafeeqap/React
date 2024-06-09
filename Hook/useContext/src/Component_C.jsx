@@ -3,7 +3,7 @@ import { UserContext } from "./Component_A.jsx"
 import ComponentD from "./Component_D.jsx"
 
 
-function ComponentC(props){
+function ComponentC(){
 
     const user = useContext(UserContext)
 

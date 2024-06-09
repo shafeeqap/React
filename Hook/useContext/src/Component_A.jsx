@@ -13,6 +13,7 @@ function ComponentA(){
     return(<div className="box">
         <h1>Component A</h1>
         <h2>{`Hello ${user}`}</h2>
+        <ComponentB prop={'shafeeq'}></ComponentB>
         <UserContext.Provider value={user}>
             <ComponentB user={user}/>
         </UserContext.Provider>
