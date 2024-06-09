@@ -28,7 +28,7 @@ export default function NavBar() {
         user?.email ? (
           <div>
         <Link to="/profile">
-          <button className="capitalize pr-4">profile</button>
+          <button className="capitalize pr-4">account</button>
         </Link>
 
         {/* <Link to="/signup"> */}
