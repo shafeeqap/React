@@ -1,7 +1,7 @@
 import React from 'react'
 import Hero from '../Components/Hero/Hero'
 import MovieRow from '../Components/MovieRow/MovieRow'
-import endpoints from '../services/moveServices'
+import endpoints from '../services/movieServices'
 
 export default function Home() {
   return (

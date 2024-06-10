@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { createImageUrl } from "../../services/moveServices";
+import { createImageUrl } from "../../services/movieServices";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../services/firebase";
-import {userAuth} from "../../context/AuthContext"
+import { userAuth } from "../../context/AuthContext";
 
-export default function MovieItem({ movie }) {
+
+export default function MovieItem({ movie, handleMovieClick, openModal  }) {
   const [like, setLike] = useState(false);
   const { title, backdrop_path, poster_path } = movie;
-  const {user} = userAuth();
+  const { user } = userAuth();
+  
 
   const markFavShow = async () => {
     const userEmail = user?.email;
@@ -24,18 +26,27 @@ export default function MovieItem({ movie }) {
     }
   };
 
+
   return (
     <div className="relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block rounded-lg overflow-hidden cursor-pointer m-2">
       {/* <p>{`${movie.title} | ${movie.id}`}</p> */}
       <img
-        className="w-full h-40 block object-cover object-top"
+        className="w-full h-40 block object-cover object-top transform hover:scale-110"
         src={createImageUrl(backdrop_path ?? poster_path, "w500")}
         alt={title}
       />
-      <div className="absolute top-0 left-0 w-full h-40 bg-black/80 opacity-0 hover:opacity-100">
+      <div
+        onClick={() => {
+          console.log("Clicked movie:", movie);
+          handleMovieClick(movie.id);
+          openModal()
+        }}
+        className="absolute top-0 left-0 w-full h-40 bg-black/80 opacity-0 hover:opacity-100"
+      >
         <p className="whitespace-normal text-xs md:text-sm flex justify-center items-center h-full font-nsans-bold">
           {movie.title}
         </p>
+
         <p onClick={markFavShow} className="cursor-pointer">
           {like ? (
             <FaHeart

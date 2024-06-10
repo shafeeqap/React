@@ -3,7 +3,7 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 import { userAuth } from "../context/AuthContext";
 import { db } from "../services/firebase";
-import { createImageUrl } from "../services/moveServices";
+import { createImageUrl } from "../services/movieServices";
 import { arrayRemove, doc, onSnapshot, updateDoc } from "firebase/firestore";
 
 export default function Profile() {

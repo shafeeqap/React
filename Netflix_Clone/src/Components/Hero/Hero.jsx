@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import endpoints, { createImageUrl } from '../../services/moveServices';
+import endpoints, { createImageUrl } from '../../services/movieServices';
 import axios from 'axios'
 
 export default function Hero() {
