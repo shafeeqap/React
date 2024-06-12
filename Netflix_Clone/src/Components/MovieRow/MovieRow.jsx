@@ -55,7 +55,7 @@ export default function MovieRow({ title, url }) {
 
   const closeModal = () =>{
     setIsModalOpen(false)
-    setUrlId('');
+    setUrlId(id);
   }
 
 
