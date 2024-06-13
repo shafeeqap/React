@@ -1,16 +1,53 @@
-import React from 'react';
-import olx_logo from '../../assets/OLX-Symbol.png';
-import { SlMagnifier, SlArrowDown  } from 'react-icons/sl';
+import React, { useState } from "react";
+import olx_logo from "../../assets/OLX-Symbol.png";
+import { SlMagnifier, SlArrowDown } from "react-icons/sl";
+import searchIcon from "../../assets/Search_glass.png";
+import Login from '../../Component/Login/Login'
 
 export default function NavBar() {
+
+  const [loginPop, setLoginPop] = useState(false);
   return (
-    <div className='flex p-4 items-center'> 
-        <img src={olx_logo} className='w-11 h-9' alt="OLX Logo" />
-        <div className='flex border border-spacing-1 w-64 p-2 border-black ml-5'>
-            <SlMagnifier className='w-6 h-5 mt-1'/>
-            <input type="text" placeholder='Location' />
-            <SlArrowDown className='w-8 h-7'/>
+    <>
+      <div className="grid sm:grid-rows-2 md:grid-rows-2 lg:grid-rows-1">
+        <div className="flex p-4 justify-between items-center">
+          <img
+            src={olx_logo}
+            className="w-11 object-contain h-9"
+            alt="OLX Logo"
+          />
+          <div className="flex max-sm:hidden border border-spacing-1 sm:w-64 md:w-64 lg:w-64 p-2 border-black ml-5">
+            <SlMagnifier className="w-6 h-5 mt-1" />
+            <input
+              className="sm:w-64 max-sm:w-14 md:w-64 lg:w-64 pl-2"
+              type="text"
+              placeholder="Location"
+            />
+            <SlArrowDown className="sm:w-4 md:w-8 lg:w-4 h-7" />
+          </div>
+          <div className="flex border max-[400px]:hidden border-black ml-4 h-12 md:w-full lg:w-2/4">
+            <input
+              className="p-2 w-full"
+              type="text"
+              placeholder="Find Cars, Mobile phones and more..."
+            />
+            <img src={searchIcon} alt="" />
+          </div>
+          <div className="flex max-md:hidden h-12 p-3 cursor-pointer items-center">
+            <h1 className="font-semibold">ENGLISH</h1>
+            <SlArrowDown className="m-3" />
+          </div>
+          <div className="flex">
+            <div onClick={()=>setLoginPop(!loginPop)} className="flex h-12 p-3 sm:ml-6 cursor-pointer items-center underline hover:no-underline">
+              <h1 className="font-bold text-lg">Login</h1>
+            </div>
+            <div className="flex h-12 p-3 sm:ml-6 cursor-pointer items-center rounded-full border border-yellow-500">
+              <h1 className="font-bold max-sm:text-sm text-lg">+SELL</h1>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+      {loginPop && <Login/>}
+    </>
   );
 }
