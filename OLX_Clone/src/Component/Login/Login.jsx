@@ -3,9 +3,20 @@ import guitar from "../../assets/guitar.webp";
 import { FcGoogle } from "react-icons/fc";
 import { FiSmartphone } from "react-icons/fi";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../Firbase/firebse";
 
 
-export default function Login() {
+export default function Login(props) {
+
+    // Function for Google Sign-In
+  const googleSingin = async()=>{
+    try {
+      await signInWithPopup(auth, googleProvider)
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div
       className="relative z-10"
@@ -20,7 +31,7 @@ export default function Login() {
           <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-[380px] sm:max-w-lg">
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
 
-              <div className="flex justify-end">
+              <div onClick={()=> props.setLoginPop(false)} className="flex justify-end cursor-pointer">
               <RiCloseLargeFill />
               </div>
 
@@ -35,17 +46,24 @@ export default function Login() {
                         Help us become one of the safest places to buy and sell
                       </p>
                     </div>
+
+
                     <div className="flex border-2 border-black font-bold p-2 items-center rounded-md cursor-pointer">
                       <FiSmartphone className="size-5 ml-2" />
                       <h1 className="ml-2">Continue with phone</h1>
                     </div>
-                    <div className="flex border border-gray-400 font-bold p-2 items-center rounded-md mt-4 cursor-pointer">
+
+
+                    <div onClick={googleSingin} className="flex border border-gray-400 font-bold p-2 items-center rounded-md mt-4 cursor-pointer">
                       <FcGoogle className="size-5 ml-2" />
                       <h1 className="ml-2">Continue with google</h1>
                     </div>
+
+
                     <div className="text-center font-bold mt-6">
                     <h1>OR</h1>
                     <h1 className="underline cursor-pointer">Loing with Email</h1>
+
 
                     </div>
                     <div className="mt-14 text-sm text-center text-black/65">
@@ -61,4 +79,6 @@ export default function Login() {
       </div>
     </div>
   );
+  
 }
+
