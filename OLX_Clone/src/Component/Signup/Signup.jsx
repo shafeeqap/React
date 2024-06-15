@@ -2,6 +2,7 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import olxLogo from "../../assets/OLX-Symbol.png";
 import { useContext, useState } from "react";
 import { FirebaseContext } from "../../Pages/FirebaseContext";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export default function Signup(props) {
   const { setSignupPop } = props;
@@ -9,15 +10,20 @@ export default function Signup(props) {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const {firebase} = useContext(FirebaseContext)
+  const {auth} = useContext(FirebaseContext)
 
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    console.log(firebase);
-    firebase.auth().createUserWithEmailAndPassword(email,password).then((result)=>{
-      result.user.updateProfile({displayName:userName})
-    })
-  }
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(result.user, { displayName: userName });
+      console.log("User created successfully:", result.user);
+    } catch (error) {
+      console.error("Error signing up: ", error);
+    }
+  };
 
   return (
     <div
