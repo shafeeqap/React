@@ -3,11 +3,14 @@ import olx_logo from "../../assets/OLX-Symbol.png";
 import { SlMagnifier, SlArrowDown } from "react-icons/sl";
 import searchIcon from "../../assets/Search_glass.png";
 import Login from '../../Component/Login/Login'
+import Signup from "../Signup/Signup";
 
 
-export default function NavBar() {
+export default function NavBar(porps) {
 
   const [loginPop, setLoginPop] = useState(false);
+  const [signupPop, setSignupPop] = useState(false);
+
   return (
     <>
       <div className=" grid sm:grid-rows-2 md:grid-rows-2 lg:grid-rows-1 bg-slate-100 fixed">
@@ -32,6 +35,7 @@ export default function NavBar() {
 
           <div className="flex border max-[400px]:hidden border-black ml-4 h-12 md:w-full lg:w-2/4 outline-none">
             <input
+            onChange={(e)=>porps?.setSearch(e.target.value)}
               className="p-2 w-full"
               type="text"
               placeholder="Find Cars, Mobile phones and more..."
@@ -56,7 +60,9 @@ export default function NavBar() {
         </div>
       </div>
       <div className="w-full h-[130px]"></div>
-      {loginPop && <Login setLoginPop={setLoginPop} />}
+      {loginPop && <Login setLoginPop={setLoginPop} setSignupPop={setSignupPop}/>}
+      {signupPop && <Signup setSignupPop={setSignupPop}/>}
+
     </>
   );
 }

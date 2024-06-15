@@ -7,6 +7,8 @@ import Footer from "../Footer/Footer";
 
 export default function Main() {
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [menu, setMenu] = useState("");
 
   const getProduct = () => {
     axios
@@ -26,10 +28,10 @@ export default function Main() {
 
   return (
     <>
-      <NavBar />
-      <MenuBar />
-      <Home products={products} />
-      <Footer/>
+      <NavBar setSearch={setSearch} />
+      <MenuBar setMenu={setMenu}/>
+      <Home products={products} search={search} menu={menu}/>
+      <Footer />
     </>
   );
 }

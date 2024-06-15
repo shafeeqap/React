@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import guitar from "../../assets/guitar.webp";
 import { FcGoogle } from "react-icons/fc";
 import { FiSmartphone } from "react-icons/fi";
@@ -8,6 +8,7 @@ import { auth, googleProvider } from "../../Firbase/firebse";
 
 
 export default function Login(props) {
+  const { setLoginPop, setSignupPop } = props;
 
     // Function for Google Sign-In
   const googleSingin = async()=>{
@@ -18,6 +19,7 @@ export default function Login(props) {
     }
   }
   return (
+    <>
     <div
       className="relative z-10"
       aria-labelledby="modal-title"
@@ -31,7 +33,7 @@ export default function Login(props) {
           <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-[380px] sm:max-w-lg">
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
 
-              <div onClick={()=> props.setLoginPop(false)} className="flex justify-end cursor-pointer">
+              <div onClick={()=> setLoginPop(false)} className="flex justify-end cursor-pointer">
               <RiCloseLargeFill />
               </div>
 
@@ -63,8 +65,9 @@ export default function Login(props) {
                     <div className="text-center font-bold mt-6">
                     <h1>OR</h1>
                     <h1 className="underline cursor-pointer">Loing with Email</h1>
-
-
+                    </div>
+                    <div className="flex py-6 justify-center">
+                      <span className="mr-2 text-sm">Don't have an account ?</span><p className="text-blue-500 text-sm cursor-pointer" onClick={()=>{setLoginPop(false) ; setSignupPop(true); }}>Signup</p>
                     </div>
                     <div className="mt-14 text-sm text-center text-black/65">
                       <p>All your personal details are safe with us.</p>
@@ -78,6 +81,7 @@ export default function Login(props) {
         </div>
       </div>
     </div>
+    </>
   );
   
 }
