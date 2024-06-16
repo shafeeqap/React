@@ -8,7 +8,7 @@ import { auth, googleProvider } from "../../Firbase/firebse";
 
 
 export default function Login(props) {
-  const { setLoginPop, setSignupPop } = props;
+  const { setLoginPop, setSignupPop, setLoginWithEmail } = props;
 
     // Function for Google Sign-In
   const googleSingin = async()=>{
@@ -64,7 +64,7 @@ export default function Login(props) {
 
                     <div className="text-center font-bold mt-6">
                     <h1>OR</h1>
-                    <h1 className="underline cursor-pointer">Loing with Email</h1>
+                    <h1 onClick={()=>{setLoginPop(false); setLoginWithEmail(true)}} className="underline cursor-pointer">Loing with Email</h1>
                     </div>
                     <div className="flex py-6 justify-center">
                       <span className="mr-2 text-sm">Don't have an account ?</span><p className="text-blue-500 text-sm cursor-pointer" onClick={()=>{setLoginPop(false) ; setSignupPop(true); }}>Signup</p>

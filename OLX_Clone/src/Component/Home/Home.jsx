@@ -1,14 +1,26 @@
+import { useState } from "react";
 import { FaRupeeSign } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Details from "../Details/Details";
 
 
 export default function Home(props) {
+
+  const [detailsPop, setDetailsPop] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleProductClick =(data)=>{
+    setSelectedProduct(data)
+    setDetailsPop(true)
+  }
+
+
   return (
     <div>
       <div className="grid grid-cols-4 px-4 gap-4 items-center">
         {props?.products?.filter((data)=>data?.title?.includes(props?.search ? props?.search : props?.menu)).map((data) => {
           return (
-            <Link to="/details" state={{data}}>
+            <div key={data.id} onClick={()=> handleProductClick(data)}>
               <div className="border border-spacing-1 p-2">
                 <div className="flex justify-center">
                   <img
@@ -26,10 +38,11 @@ export default function Home(props) {
                   <h1 className="text-gray-500">{data.category}</h1>
                 </div>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>
+      {detailsPop && <Details setDetailsPop={setDetailsPop} product={selectedProduct} />}
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import { RiCloseLargeFill } from "react-icons/ri";
 import olxLogo from "../../assets/OLX-Symbol.png";
 import { useContext, useState } from "react";
-import { FirebaseContext } from "../../Pages/FirebaseContext";
+import { FirebaseContext } from "../../Context/FirebaseContext";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup(props) {
   const { setSignupPop } = props;
@@ -10,7 +12,9 @@ export default function Signup(props) {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const {auth} = useContext(FirebaseContext)
+  const {auth, firestore } = useContext(FirebaseContext)
+  const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
 
 
@@ -19,11 +23,26 @@ export default function Signup(props) {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(result.user, { displayName: userName });
-      console.log("User created successfully:", result.user);
+      await addDoc(collection(firestore, 'users'),{
+          id:result.user.uid,
+          userName:userName,
+          phone:phone
+        }).then(() => {
+          console.log('signing up success');
+          navigate('/login');
+        });
+        
     } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        setError('Email already in use. Please try another email.');
+      } else {
+        setError('Error signing up. Please try again.');
+      }
       console.error("Error signing up: ", error);
     }
   };
+
+
 
   return (
     <div
@@ -154,7 +173,9 @@ export default function Signup(props) {
                           >
                             Sign in
                           </button>
-                        </div>
+                        </div>        
+                        {error && <p style={{ color: 'red' }}>{error}</p>}
+
                       </form>
 
                       <p className="mt-10 text-center text-sm text-gray-500">
