@@ -34,7 +34,7 @@ export default function Login(props) {
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
 
               <div onClick={()=> setLoginPop(false)} className="flex justify-end cursor-pointer">
-              <RiCloseLargeFill />
+              <RiCloseLargeFill/>
               </div>
 
               <div className="flex sm:items-start justify-center">

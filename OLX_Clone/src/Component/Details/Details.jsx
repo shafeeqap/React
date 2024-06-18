@@ -2,6 +2,8 @@ import React from "react";
 import { FaRupeeSign } from "react-icons/fa";
 
 const Details = ({ setDetailsPop, product }) => {
+
+  
   return (
     <div className="relative z-10" role="dialog" aria-modal="true">
       <div className="fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity md:block"></div>
@@ -31,16 +33,16 @@ const Details = ({ setDetailsPop, product }) => {
                 </svg>
               </div>
 
-              <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
+              <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8 py-10">
                 <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
                   <img
                     className="object-cover object-center"
-                    src={product?.image}
+                    src={product?.url ? product.url : product.image}
                     alt="product"
                   />
                 </div>
                 <div className="sm:col-span-8 lg:col-span-7">
-                  <section aria-labelledby="information-heading" className="mt-2">
+                  <section aria-labelledby="information-heading" className="mt-2 border border-black py-4 px-4 rounded-md">
                     <h3 id="information-heading" className="sr-only">
                       Product information
                     </h3>
@@ -56,7 +58,7 @@ const Details = ({ setDetailsPop, product }) => {
                     </h1>
                     <h1 className="pt-2">
                       <span className="font-semibold">Title</span> :{" "}
-                      {product?.title}
+                      {product?.title ? product.title : product.name}
                     </h1>
                     <h1 className="pt-2">
                       <span className="font-semibold">Description</span> :{" "}
@@ -78,10 +80,10 @@ const Details = ({ setDetailsPop, product }) => {
                     </div>
                   </section>
 
-                  <section aria-labelledby="options-heading" className="mt-10">
-                    <h3 id="options-heading" className="sr-only">
-                      Product options
-                    </h3>
+                  <section aria-labelledby="options-heading" className="mt-2 border border-black py-4 px-4 rounded-md">
+                    <h1 className="font-semibold">Seller Details</h1>
+                    <p>Name : </p>
+                    <p>Address</p>
                   </section>
                 </div>
               </div>

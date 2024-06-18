@@ -7,7 +7,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup(props) {
-  const { setSignupPop } = props;
+  const { setSignupPop, setLoginWithEmail  } = props;
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -56,6 +56,7 @@ export default function Signup(props) {
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-[380px] sm:max-w-lg">
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+
               <div onClick={() => setSignupPop(false)} className="flex justify-end cursor-pointer">
                 <RiCloseLargeFill />
               </div>
@@ -143,14 +144,7 @@ export default function Signup(props) {
                             >
                               Password
                             </label>
-                            <div className="text-sm">
-                              <a
-                                href="#"
-                                className="font-semibold text-indigo-600 hover:text-indigo-500"
-                              >
-                                Forgot password?
-                              </a>
-                            </div>
+                        
                           </div>
                           <div className="mt-2">
                             <input
@@ -180,12 +174,12 @@ export default function Signup(props) {
 
                       <p className="mt-10 text-center text-sm text-gray-500">
                         Already have an account ?{" "}
-                        <a
-                          href="#"
-                          className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                        <span
+                        onClick={()=>{setSignupPop(false); setLoginWithEmail(true)}}
+                          className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer"
                         >
                           Login
-                        </a>
+                        </span>
                       </p>
                     </div>
                   </div>

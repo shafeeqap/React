@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
-import Main from "./Component/Main/Main";
-import Details from "./Component/Details/Details";
-import Signup from "./Component/Signup/Signup";
-import Create  from './Pages/Create'
-import LoginWithEmail from "./Pages/LoginWithEmail";
+import HomePage from "./Pages/HomePage";
+import CreatePage  from './Pages/CreatePage'
 import { useContext, useEffect } from "react";
 import {AuthContext} from './Context/AuthContext'
 import {onAuthStateChanged} from 'firebase/auth'
 import { auth } from "./Firbase/firebse";
+import SignupPage from "./Pages/SignupPage";
+import DetailsPage from "./Pages/DetailsPage";
+import LoginPage from "./Pages/LoginPage";
 
 export default function App() {
 
@@ -25,11 +25,11 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/details" element={<Details/>}/>
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/login" element={<LoginWithEmail/>}/>
-        <Route path="/create" element={<Create/>}/>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/details" element={<DetailsPage/>}/>
+        <Route path="/signup" element={<SignupPage/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/create" element={<CreatePage/>}/>
       </Routes>
     </>
   );

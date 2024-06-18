@@ -5,13 +5,16 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { FirebaseProvider } from "./Context/FirebaseContext.jsx";
 import AuthProvider from "./Context/AuthContext.jsx";
+import PostPovider from "./Context/PostContext.jsx"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <FirebaseProvider>
     <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <PostPovider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PostPovider>
     </AuthProvider>
   </FirebaseProvider>
 );

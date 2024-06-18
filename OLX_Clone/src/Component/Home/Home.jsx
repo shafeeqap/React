@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaRupeeSign } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import Details from "../Details/Details";
 
 

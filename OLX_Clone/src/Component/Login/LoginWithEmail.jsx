@@ -1,17 +1,14 @@
 import React, { useState,  useContext } from 'react'
 import { RiCloseLargeFill } from "react-icons/ri";
-import olxLogo from "../assets/OLX-Symbol.png";
-import { FirebaseContext } from "../Context/FirebaseContext";
+import olxLogo from "../../assets/OLX-Symbol.png";
+import { FirebaseContext } from "../../Context/FirebaseContext";
 import { useNavigate } from "react-router-dom";
 import {signInWithEmailAndPassword} from 'firebase/auth'
 
 
-
-
-
 const LoginWithEmail = (props) => {
 
-    const {setLoginWithEmail} = props
+    const {setLoginWithEmail, setSignupPop} = props
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,6 +24,7 @@ const LoginWithEmail = (props) => {
         try {
             await signInWithEmailAndPassword(auth, email, password)
             navigate('/');
+            // setLoginWithEmail(false)
         } catch (error) {
             console.log('Login failed:',error);
             setError('Login failed. Please check your email and password.');
@@ -131,12 +129,11 @@ const LoginWithEmail = (props) => {
     
                           <p className="mt-10 text-center text-sm text-gray-500">
                             Don't have an account ?{" "}
-                            <a
-                              href="#"
-                              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                            <span onClick={()=>{setLoginWithEmail(false); setSignupPop(true)}}
+                              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer"
                             >
                             Sign in
-                            </a>
+                            </span>
                           </p>
                         </div>
                       </div>
@@ -144,6 +141,7 @@ const LoginWithEmail = (props) => {
                   </div>
                 </div>
               </div>
+              {}
             </div>
       );
 }
