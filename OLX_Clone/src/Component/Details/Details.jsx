@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import { FaRupeeSign } from "react-icons/fa";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Details = ({ setDetailsPop, product }) => {
-
+  const {user} = useContext(AuthContext)
+// console.log(user);
   
   return (
     <div className="relative z-10" role="dialog" aria-modal="true">
@@ -82,8 +84,8 @@ const Details = ({ setDetailsPop, product }) => {
 
                   <section aria-labelledby="options-heading" className="mt-2 border border-black py-4 px-4 rounded-md">
                     <h1 className="font-semibold">Seller Details</h1>
-                    <p>Name : </p>
-                    <p>Address</p>
+                    <p>Name : {user.displayName}</p>
+                    {/* <p>Address</p> */}
                   </section>
                 </div>
               </div>

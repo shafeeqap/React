@@ -9,7 +9,6 @@ import { AuthContext } from "../../Context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firbase/firebse";
 import { Link, useNavigate } from "react-router-dom";
-import Create from "../Create/Create";
 
 export default function NavBar(porps) {
   const {user} = useContext(AuthContext)
@@ -61,7 +60,13 @@ export default function NavBar(porps) {
               {user ? (<h1 className="font-bold text-lg" onClick={()=>{signOut(auth); navigate('/login')}}>Logout</h1>) : (<h1 onClick={()=>setLoginPop(!loginPop)} className="font-bold text-lg">Login</h1>)}
             </div>
             <div className="flex h-10  sm:w-24 cursor-pointer justify-center items-center rounded-full border border-yellow-500">
-              <Link to="/create"><h1 className="font-bold max-sm:text-sm text-lg">+ SELL</h1></Link>
+              {user ? (<Link to="/create"><h1 className="font-bold max-sm:text-sm text-lg">+ SELL</h1>
+              </Link>
+              ) : (
+                <div onClick={()=>alert('Please login')}>
+                  <h1 className="font-bold max-sm:text-sm text-lg">+ SELL</h1>
+                </div>
+              )}
             </div>
           </div>
         </div>

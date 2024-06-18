@@ -24,7 +24,7 @@ const LoginWithEmail = (props) => {
         try {
             await signInWithEmailAndPassword(auth, email, password)
             navigate('/');
-            // setLoginWithEmail(false)
+            setLoginWithEmail(false)
         } catch (error) {
             console.log('Login failed:',error);
             setError('Login failed. Please check your email and password.');
