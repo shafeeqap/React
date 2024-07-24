@@ -1,0 +1,27 @@
+.pagination{
+    list-style-type: none; /* Remove default bullet points */
+    display: flex; 
+    margin-top: 1re
+}
+
+.page-item {
+    margin: 0 0.5rem; /* Add space between page items */
+  }
+
+  .page-link {
+    background-color: #f0f0f0; /* Background color for page links */
+    padding: 0.5rem 1rem; /* Add padding */
+    border-radius: 0.25rem; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Text color */
+    cursor: pointer; /* Pointer cursor */
+  }
+
+  .page-link:hover {
+    background-color: #d0d0d0; /* Background color on hover */
+  }
+
+  .page-item.active .page-link {
+    background-color: #007bff; /* Active page background color */
+    color: #fff; /* Active page text color */
+  }

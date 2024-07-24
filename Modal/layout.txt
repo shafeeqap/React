@@ -1,0 +1,5 @@
+Create a basic modal layout
+Add styling
+Handle show/hide modal
+Implement onClose event
+Close modal by outside click
