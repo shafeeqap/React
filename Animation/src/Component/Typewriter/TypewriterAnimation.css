@@ -1,0 +1,11 @@
+div{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white;
+    height: 100vh;
+}
+.container{
+    margin-left: 10%;
+}
