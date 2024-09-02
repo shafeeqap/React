@@ -1,0 +1,16 @@
+Server side
+-----------
+1. exprss
+2. dotenv
+3. cors
+4. nodemon
+5. passport
+6. passport-google-oauth20 
+7. cookie-session
+8. mongoose
+
+client side 
+-----------
+1. vite
+2. axios
+3. react-router-dom
