@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .vertical-line {
+    border-right: 2px solid #d1d5db; 
+    height: 90%; 
+    margin-top: 5%;
+    margin-bottom: 5%;
+} */
+body{
+    background-color:rgb(228, 226, 226);
+}
+.active{
+    @apply text-teal-600 border-b-2 border-teal-600 pb-1
+}
