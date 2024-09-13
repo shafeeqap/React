@@ -8,6 +8,8 @@ Server side
 6. passport-google-oauth20 
 7. cookie-session
 8. mongoose
+9. connect-flash --> display messages
+
 
 client side 
 -----------

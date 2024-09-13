@@ -15,10 +15,13 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        let user = await User.findOne({ googleId: profile.id});
+        let existingUser = await User.findOne({ googleId: profile.id});
+        if(existingUser){
+          return done(null, existingUser);
+        }
 
-        if(!user){
-          user = new User({
+        if(!existingUser){
+          const newUser = new User({
             googleId: profile.id,
             firstName: profile.name.givenName,
             lastName: profile.name.familyName,
@@ -26,9 +29,9 @@ passport.use(
             profileImage: profile.photos[0].value,
             displayName: profile.displayName,
           });
-          await user.save();
+          await newUser.save();
         }
-        done(null, user);
+        done(null, newUser);
       } catch (error) {
         done(error, false);
       }

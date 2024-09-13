@@ -11,11 +11,15 @@ const App = () => {
     try {
       const url = "http://localhost:3000/auth/login/success";
       const res = await axios.get(url, { withCredentials: true});
-      console.log(res, 'Res');
+      console.log('User response:', res);
       
-      setUser(res.data.user);
+      if(res.data.user){
+        setUser(res.data.user);
+      }else{
+        console.log('No user data received');
+      }
     } catch (error) {
-      console.log(error);
+      console.log('Error fetching user:',error);
       
     }
   }

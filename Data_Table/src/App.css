@@ -1,0 +1,36 @@
+.homeDiv{
+  padding: 0.5rem 10rem;
+}
+
+.Btn {
+  padding: 5px 10px;
+  margin: 0px 2px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.readBtn {
+  background-color: blue;
+}
+
+.editBtn {
+  background-color: green;
+}
+
+.deleteBtn {
+  background-color: red;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search input {
+  padding: 0 5px;
+  height: 30px;
+  width: 250px;
+}
