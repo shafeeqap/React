@@ -5,13 +5,10 @@ import wind_icon from "../assets/wind.png";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
-import { Oval } from "react-loader-spinner";
+
 
 const Weather = () => {
-  const [weatherData, setWeatherData] = useState({
-    loading: false,
-    error: false,
-  });
+  const [weatherData, setWeatherData] = useState();
   const inputRef = useRef();
 
   const toDate = () => {
@@ -68,7 +65,6 @@ const Weather = () => {
 
       const icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       setWeatherData({
-        loading: true,
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         temperature: Math.floor(data.main.temp),
@@ -102,13 +98,11 @@ const Weather = () => {
         <>
           <div className="weather-container">
             <img src={weatherData.icon} alt="" className="weather-icon" />
-            <div>
               <p className="temperature">
                 {weatherData.temperature}
                 <span>°C</span>
               </p>
-              <p className="description">{weatherData.description}</p>
-            </div>
+              <small className="description">{weatherData.description}</small>
           </div>
           <p className="location">
             {weatherData.location} <span>{weatherData.country}</span>{" "}
@@ -130,9 +124,6 @@ const Weather = () => {
               </div>
             </div>
           </div>
-          {/* {weatherData.loading && (
-            <Oval type="Oval" color="green" height={70} width={70}></Oval>
-          )} */}
         </>
       ) : (
         <></>
