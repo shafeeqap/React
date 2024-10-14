@@ -1,0 +1,9 @@
+Frontend
+--------
+npm create vite
+npm install axios react-router-dom tailwindcss postcss autoprefixer socket.io-client
+
+Backend
+-------
+npm init -y
+npm install bcrypt cors express jsonwebtoken mongoose multer nodemon path socket.io
