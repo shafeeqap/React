@@ -13,24 +13,25 @@ import Signup from "../components/Authentication/Signup";
 
 const HomePage = () => {
   return (
-    <Container maxW={"100%"} ml={"0"} p={"0"}>
+    <Container maxW={"100vw"} ml={"0"} p={"0"} centerContent>
       <Box
         display={"flex"}
         justifyContent="center"
         bg={"white"}
-        w={"40%"}
-        p={"3"}
-        m={"100px 0 15px 100px"}
+        w={{base: "90%", md: "70%", lg: "40%"}}
+        p={4}
+        mt={{ base: "50px", md: "80px", lg: "80px" }}
+        mb={5}
       >
         <Text
-          fontSize={"2xl"}
+          fontSize={['sm', 'md', 'lg', 'xl']}
           fontFamily={"work sans"}
           textTransform={"uppercase"}
         >
           Talk me
         </Text>
       </Box>
-      <Box bg={"white"} w={"40%"} p={4} m={"10px 0 100px 100px"}>
+      <Box bg={"white"} w={{ base: "90%", md: "70%", lg: "40%" }} p={4} mb={20}>
         <Tabs isFitted variant='enclosed' >
           <TabList mb="1em">
             <Tab _selected={{bg:'blue.100', fontFamily:'work sans'}}>Login</Tab>

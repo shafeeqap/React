@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const bycript = require("bcryptjs");
 
-const userScheema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -23,12 +24,27 @@ const userScheema = new mongoose.Schema(
     },
     isAdmin: {
       type: Boolean,
-      required: true,
       default: false,
     },
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userScheema);
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    return next();
+  }
+
+  const salt = await bycript.genSalt(10)
+  console.log('salt', salt);
+  
+  this.password = await bycript.hash(this.password, salt);
+  next();
+});
+
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bycript.compare(enteredPassword, this.password);
+};
+
+const User = mongoose.model("User", userSchema);
 module.exports = User;
