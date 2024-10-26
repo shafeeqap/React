@@ -17,7 +17,7 @@ body, html {
     justify-content: left;
     align-items: start;
     padding-left: 30px;
-    background-image: url('../public/background.png');
+    background-image: url('/background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,7 +26,6 @@ body, html {
 @media (max-width: 768px){
     .App {
         padding: 20px;
-        background-size: 100% 100%;
         background-color: rgb(152, 208, 212);
         background-image: none;
     }
@@ -35,7 +34,6 @@ body, html {
 @media (max-width: 480px) {
     .App {
         padding: 10px;
-        background-size: 100% 100%;
         background-color: rgb(152, 208, 212);
         background-image: none;
     }
