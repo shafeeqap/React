@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "init": "^0.1.2",
+    "nodemon": "^3.1.7",
+    "twilio": "^5.3.5"
+  },
+  "name": "twilio",
+  "description": "MHFNPRC2VG6GKTQTXJRT5BFR",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon backend/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
