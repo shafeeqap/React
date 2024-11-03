@@ -56,7 +56,9 @@ const Login = () => {
         position: "top",
       });
       console.log("Submit Data", data);
+
       localStorage.setItem("userInfo", JSON.stringify(data));
+      
       setLoading(false);
       navigate("/chats");
     } catch (error) {

@@ -16,7 +16,7 @@ body, html {
     display: flex;
     justify-content: left;
     align-items: start;
-    padding-left: 30px;
+    /* padding-left: 30px; */
     background-image: url('/background.png');
     background-size: cover;
     background-position: center;
