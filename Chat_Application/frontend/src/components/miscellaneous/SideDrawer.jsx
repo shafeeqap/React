@@ -2,27 +2,87 @@ import {
   Avatar,
   Box,
   Button,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Input,
   Menu,
   MenuButton,
   MenuDivider,
   MenuItem,
   MenuList,
-  space,
   Text,
   Tooltip,
+  useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaSearch, FaBell, FaChevronDown } from "react-icons/fa";
-import { Icon } from "@chakra-ui/react";
 import { ChatState } from "../../Context/ChatProvider";
 import ProfileModal from "./ProfileModal";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import ChatLoading from "../ChatLoading";
+import UserListItem from "../UserAvatar/UserListItem";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-  const [loading, setloading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState();
+  const navigate = useNavigate();
+  const toast = useToast();
+
   const { user } = ChatState();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const logoutHandler = () => {
+    localStorage.removeItem("userInfo");
+    navigate("/");
+  };
+
+  const handleSearch = async () => {
+    if (!search) {
+      toast({
+        title: "Please enter something in search",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top-left",
+      });
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+
+      const { data } = await axios.get(`/api/user?search=${search}`, config);
+console.log('data',data);
+
+      setLoading(false);
+      setSearchResult(data);
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: "Failed to Load the Search Results",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-left",
+      });
+      console.log(error);
+    }
+  };
+
+  const accessChat = (userId) => {};
 
   return (
     <>
@@ -36,7 +96,7 @@ const SideDrawer = () => {
         // borderWidth={"5px"}
       >
         <Tooltip label="Search user to chat" hasArrow placement="bottom-end">
-          <Button variant={"ghost"}>
+          <Button variant={"ghost"} onClick={onOpen}>
             <FaSearch />
             <Text display={{ base: "none", md: "flex" }} px={"4"}>
               Search User
@@ -63,11 +123,41 @@ const SideDrawer = () => {
                 <MenuItem>My Profile</MenuItem>
               </ProfileModal>
               <MenuDivider />
-              <MenuItem>Logout</MenuItem>
+              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
             </MenuList>
           </Menu>
         </div>
       </Box>
+
+      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader borderBottomWidth={"1px"}>Search User</DrawerHeader>
+          <DrawerBody bg={"blackAlpha.300"}>
+            <Box display={"flex"} pb={"1px"}>
+              <Input
+                placeholder="Search by name or email"
+                mr={2}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <Button onClick={handleSearch}>Go</Button>
+            </Box>
+            {loading ? (
+              <ChatLoading />
+            ) : (
+              // searchResult?.map((user) => (
+              //   <UserListItem
+              //     key={user._id}
+              //     user={user}
+              //     handleFunction={() => accessChat(user._id)}
+              //   />
+              // ))
+              ''
+            )}
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 };

@@ -36,20 +36,28 @@ const ProfileModal = ({ user, children }) => {
             fontFamily={"Work sans"}
             display={"flex"}
             justifyContent={"center"}
+            textTransform={"uppercase"}
           >
             {user.name}
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody
+            display={"flex"}
+            flexDirection={"column"}
+            justifyContent={"space-between"}
+            alignItems={"center"}
+          >
             <Image
               borderRadius={"full"}
               boxSize={"150px"}
               src={user.pic}
               alt={user.name}
             />
-            <Text fontSize={{base: '20px', md: '25px'}}
-            fontFamily={'Work sans'}>
-                Email: {user.email}
+            <Text
+              fontSize={{ base: "15px", md: "22px" }}
+              fontFamily={"Work sans"}
+            >
+              Email: {user.email}
             </Text>
           </ModalBody>
 
