@@ -28,14 +28,14 @@ const ProfileModal = ({ user, children }) => {
           onClick={onOpen}
         />
       )}
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent w={{ base: "60%", md: "70%", lg: "40%" }} p={5} display={{sm: 'flex'}}>
           <ModalHeader
-            fontSize={"30px"}
+            fontSize={{ base: "20px", md: "30px", lg: "30px" }}
             fontFamily={"Work sans"}
             display={"flex"}
-            justifyContent={"center"}
+            justifyContent={{base:"center"}}
             textTransform={"uppercase"}
           >
             {user.name}
@@ -44,24 +44,24 @@ const ProfileModal = ({ user, children }) => {
           <ModalBody
             display={"flex"}
             flexDirection={"column"}
-            justifyContent={"space-between"}
+            justifyContent={{base:"space-between", sm:'center'}}
             alignItems={"center"}
           >
             <Image
               borderRadius={"full"}
-              boxSize={"150px"}
+              boxSize={{base:"60%", md: "40%", lg: "40%" }}
               src={user.pic}
               alt={user.name}
             />
             <Text
-              fontSize={{ base: "15px", md: "22px" }}
+              fontSize={{ base: "12px", md: "20px", lg: "20px" }}
               fontFamily={"Work sans"}
             >
               Email: {user.email}
             </Text>
           </ModalBody>
 
-          <ModalFooter>
+          <ModalFooter display={{base: 'flex'}} justifyContent={{base: 'center', md: 'flex-end', lg: 'flex-end'}}>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>

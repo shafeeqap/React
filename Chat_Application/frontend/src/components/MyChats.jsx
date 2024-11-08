@@ -1,9 +1,14 @@
-import React from 'react'
+import { useToast } from "@chakra-ui/react";
+import { ChatState } from "../Context/ChatProvider";
+import { useState } from "react";
 
 const MyChats = () => {
-  return (
-    <div>MyChats</div>
-  )
-}
+  const [loggedUser, setLoggedUser] = useState();
+  const { user, selectedChat, setSelectedChat, chats, setChats } = ChatState();
+  
+  const toast = useToast();
 
-export default MyChats
+  return <div>MyChats</div>;
+};
+
+export default MyChats;

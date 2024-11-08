@@ -104,7 +104,7 @@ const Signup = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:8000/api/user",
+        "/api/user",
         { name, email, password, pic },
         config
       );
@@ -118,13 +118,14 @@ const Signup = () => {
       console.log("Submit Data", data);
 
       localStorage.setItem("userInfo", JSON.stringify(data));
-  
+
       setLoading(false);
       navigate("/chats");
     } catch (error) {
       toast({
         title: "Error Occured!",
-        description: error.response?.data?.message || "An unexpected error occurred.",
+        description:
+          error.response?.data?.message || "An unexpected error occurred.",
         status: "error",
         duration: 5000,
         isClosable: true,

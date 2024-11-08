@@ -44,7 +44,7 @@ const Login = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:8000/api/user/login",
+        "/api/user/login",
         { email, password },
         config
       );
@@ -58,7 +58,7 @@ const Login = () => {
       console.log("Submit Data", data);
 
       localStorage.setItem("userInfo", JSON.stringify(data));
-      
+
       setLoading(false);
       navigate("/chats");
     } catch (error) {

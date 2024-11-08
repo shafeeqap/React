@@ -35,7 +35,7 @@ const SideDrawer = () => {
   const navigate = useNavigate();
   const toast = useToast();
 
-  const { user } = ChatState();
+  const { user, setSelectedChat, chats, setChats } = ChatState();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const logoutHandler = () => {
@@ -65,7 +65,7 @@ const SideDrawer = () => {
       };
 
       const { data } = await axios.get(`/api/user?search=${search}`, config);
-console.log('data',data);
+      console.log("data", data);
 
       setLoading(false);
       setSearchResult(data);
@@ -82,7 +82,31 @@ console.log('data',data);
     }
   };
 
-  const accessChat = (userId) => {};
+  const accessChat = async (userId) => {
+    try {
+      setLoadingChat(true);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+
+      const { data } = await axios.post("/api/chat", { userId }, config);
+      setSelectedChat(data);
+      setLoadingChat(false);
+      onClose();
+    } catch (error) {
+      toast({
+        title: "Error fetch the chat",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-left",
+      });
+    }
+  };
 
   return (
     <>
@@ -133,7 +157,7 @@ console.log('data',data);
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth={"1px"}>Search User</DrawerHeader>
-          <DrawerBody bg={"blackAlpha.300"}>
+          <DrawerBody>
             <Box display={"flex"} pb={"1px"}>
               <Input
                 placeholder="Search by name or email"
@@ -146,14 +170,13 @@ console.log('data',data);
             {loading ? (
               <ChatLoading />
             ) : (
-              // searchResult?.map((user) => (
-              //   <UserListItem
-              //     key={user._id}
-              //     user={user}
-              //     handleFunction={() => accessChat(user._id)}
-              //   />
-              // ))
-              ''
+              searchResult?.map((user) => (
+                <UserListItem
+                  key={user._id}
+                  user={user}
+                  handleFunction={() => accessChat(user._id)}
+                />
+              ))
             )}
           </DrawerBody>
         </DrawerContent>
