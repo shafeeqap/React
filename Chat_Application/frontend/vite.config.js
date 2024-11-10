@@ -15,4 +15,8 @@ export default defineConfig({
       },
     },
   },
+  define: {
+    'process.env': {},
+    'process.argv': [], 
+  },
 });
