@@ -5,6 +5,7 @@ import { MdAdd } from "react-icons/md";
 import axios from "axios";
 import ChatLoading from "./ChatLoading";
 import { getSender } from "../config/ChatLogics.js";
+import GroupChatModal from "./miscellaneous/GroupChatModal.jsx";
 
 const MyChats = () => {
   const [loggedUser, setLoggedUser] = useState();
@@ -27,13 +28,12 @@ const MyChats = () => {
     } catch (error) {
       toast({
         title: "Error Occured!",
-        description: "Failed to Load the Chats",
+        description: error.response?.data?.message || "Failed to Load the Chats",
         status: "error",
         duration: 5000,
         isClosable: true,
         position: "bottom-left",
       });
-      console.log(error);
     }
   };
 
@@ -64,14 +64,17 @@ const MyChats = () => {
         alignItems={"center"}
       >
         My Chats
-        <Button
-          display={"flex"}
-          fontFamily={{ base: "17px", md: "10px", lg: "17px" }}
-          rightIcon={<MdAdd />}
-        >
-          New Group Chat
-        </Button>
+        <GroupChatModal>
+          <Button
+            display={"flex"}
+            fontFamily={{ base: "17px", md: "10px", lg: "17px" }}
+            rightIcon={<MdAdd />}
+          >
+            New Group Chat
+          </Button>
+        </GroupChatModal>
       </Box>
+
       <Box
         display={"flex"}
         flexDir={"column"}
