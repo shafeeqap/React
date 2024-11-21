@@ -133,7 +133,7 @@ const SideDrawer = () => {
           </Button>
         </Tooltip>
         <Text fontSize={"2xl"} fontFamily={"Work sans"}>
-          Talk me
+          ChatMe
         </Text>
         <div style={{ display: "flex", gap: "15px" }}>
           <Menu>

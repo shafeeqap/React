@@ -1,13 +1,14 @@
-import { Box, Button, Stack, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Stack, Text, Tooltip, useToast } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
 import { useEffect, useState } from "react";
-import { MdAdd } from "react-icons/md";
+import { RiChatNewLine } from "react-icons/ri";
 import axios from "axios";
 import ChatLoading from "./ChatLoading";
 import { getSender } from "../config/ChatLogics.js";
 import GroupChatModal from "./miscellaneous/GroupChatModal.jsx";
+import { HiDotsVertical } from "react-icons/hi";
 
-const MyChats = () => {
+const MyChats = ({fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState();
   const { user, selectedChat, setSelectedChat, chats, setChats } = ChatState();
 
@@ -28,7 +29,8 @@ const MyChats = () => {
     } catch (error) {
       toast({
         title: "Error Occured!",
-        description: error.response?.data?.message || "Failed to Load the Chats",
+        description:
+          error.response?.data?.message || "Failed to Load the Chats",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -40,7 +42,7 @@ const MyChats = () => {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, []);
+  }, [fetchAgain]);
 
   return (
     <Box
@@ -63,15 +65,21 @@ const MyChats = () => {
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        My Chats
+        Chats
         <GroupChatModal>
-          <Button
-            display={"flex"}
-            fontFamily={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<MdAdd />}
-          >
-            New Group Chat
-          </Button>
+          <Tooltip label="New group chat" hasArrow placement="bottom-end">
+            <Button
+              display={"flex"}
+              fontFamily={{ base: "17px", md: "10px", lg: "17px" }}
+              // rightIcon={<RiChatNewLine />}
+              bg={"none"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              fontSize={{ base: "25px", md: "25px" }}
+            >
+              <RiChatNewLine />
+            </Button>
+          </Tooltip>
         </GroupChatModal>
       </Box>
 
