@@ -32,7 +32,7 @@ const ProfileModal = ({ user, children }) => {
         <ModalOverlay />
         <ModalContent w={{ base: "60%", md: "70%", lg: "40%" }} p={5} display={{sm: 'flex'}}>
           <ModalHeader
-            fontSize={{ base: "20px", md: "30px", lg: "30px" }}
+            fontSize={{ base: "20px", md: "25px", lg: "25px" }}
             fontFamily={"Work sans"}
             display={"flex"}
             justifyContent={{base:"center"}}
@@ -49,7 +49,7 @@ const ProfileModal = ({ user, children }) => {
           >
             <Image
               borderRadius={"full"}
-              boxSize={{base:"60%", md: "40%", lg: "40%" }}
+              boxSize={{ base: "100px", md: "130px", lg: "130px" }}
               src={user.pic}
               alt={user.name}
             />
