@@ -71,7 +71,6 @@ const MyChats = ({fetchAgain}) => {
             <Button
               display={"flex"}
               fontFamily={{ base: "17px", md: "10px", lg: "17px" }}
-              // rightIcon={<RiChatNewLine />}
               bg={"none"}
               alignItems={"center"}
               justifyContent={"center"}

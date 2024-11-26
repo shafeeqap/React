@@ -116,7 +116,7 @@ const createGroupChat = asyncHandler(async (req, res) => {
 
 // @desc     Rename Group Chat
 // route     PUT /api/chat/rename
-// @access   Public
+// @access   Private
 const renameGroup = asyncHandler(async (req, res) => {
   const { chatId, chatName } = req.body;
 
@@ -138,7 +138,7 @@ const renameGroup = asyncHandler(async (req, res) => {
 
 // @desc     User Add to Group Chat
 // route     PUT /api/chat/groupadd
-// @access   Public
+// @access   Private
 const addToGroup = asyncHandler(async (req, res) => {
   const { chatId, userId } = req.body;
 
@@ -158,12 +158,25 @@ const addToGroup = asyncHandler(async (req, res) => {
   }
 });
 
-
-// @desc     User Removed from the Group Chat
-// route     PUT /api/chat/groupadd
-// @access   Public
+// @desc     Remove a user from the Group Chat
+// route     PUT /api/chat/removeuser
+// @access   Private
 const removeFromGroup = asyncHandler(async (req, res) => {
   const { chatId, userId } = req.body;
+
+  
+  const chat = await Chat.findById(chatId);
+
+  if (!chat) {
+    res.status(404);
+    throw new Error("Chat Not Found");
+  }
+
+  // Only allow admins to remove users
+  // if (chat.groupAdmin.toString() !== req.user._id) {
+  //   res.status(403);
+  //   throw new Error("Only admins can remove users from the group");
+  // }
 
   const removed = await Chat.findByIdAndUpdate(
     chatId,
@@ -181,6 +194,67 @@ const removeFromGroup = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc     Leave the group
+// @route    PUT /api/chat/leavegroup
+// @access   Private
+const leaveGroup = asyncHandler(async (req, res) => {
+  const { chatId } = req.body;
+
+  // Fetch the chat
+  const chat = await Chat.findById(chatId);
+
+  if (!chat) {
+    res.status(404);
+    throw new Error("Chat Not Found");
+  }
+
+  // Check if the requester is part of the group
+  if (!chat.users.includes(req.user._id)) {
+    res.status(403);
+    throw new Error("You are not a member of this group");
+  }
+
+  // If the admin is leaving, disband the group
+  if (chat.groupAdmin.toString() === req.user._id) {
+    await Chat.findByIdAndDelete(chatId);
+    return res.status(200).json({ message: "Group disbanded successfully" });
+  }
+
+  // Remove the user from the group
+  const updatedChat = await Chat.findByIdAndUpdate(
+    chatId,
+    { $pull: { users: req.user._id } },
+    { new: true }
+  )
+    .populate("users", "-password")
+    .populate("groupAdmin", "-password");
+
+  res.status(200).json(updatedChat);
+});
+
+// @desc     Disband the Group Chat
+// route     DELETE /api/chat/disbandgroup
+// @access   Private
+const disbandGroup = asyncHandler(async (req, res) => {
+  const { chatId } = req.body;
+
+  const group = await Chat.findById(chatId);
+
+  if (!group) {
+    res.status(404);
+    throw new Error("Chat Not Found");
+  }
+
+  if (group.groupAdmin.toString() !== req.user._id) {
+    res.status(403);
+    throw new Error("Only the group admin can disband the group");
+  }
+
+  await Chat.findByIdAndDelete(chatId);
+
+  res.status(200).json({ message: "Group disbanded successfully" });
+});
+
 module.exports = {
   accessChat,
   fetchChats,
@@ -188,4 +262,6 @@ module.exports = {
   renameGroup,
   addToGroup,
   removeFromGroup,
+  leaveGroup,
+  disbandGroup,
 };
