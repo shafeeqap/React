@@ -27,12 +27,11 @@ const sendMessage = asyncHandler(async (req, res) => {
     message = await message.populate("chat");
     message = await User.populate(message, {
       path: "chat.users",
-      select: "name pic eamil",
+      select: "name pic email",
     });
 
-    await Chat.findByIdAndUpdate(req.body.chatId, {
-      latestMessage: message,
-    });
+    await Chat.findByIdAndUpdate(chatId, { latestMessage: message });
+    console.log("Final populated message:", message);
 
     res.json(message);
   } catch (error) {
@@ -44,12 +43,12 @@ const sendMessage = asyncHandler(async (req, res) => {
 // @desc     Fetch all Messages
 // route     GET /api/message/:chatId
 // @access   Public
-const allMessages = asyncHandler(async (req, res) => {
+const fetchAllMessages = asyncHandler(async (req, res) => {
   try {
     const message = await Message.find({ chat: req.params.chatId })
       .populate("sender", "name pic email")
       .populate("chat");
-      
+
     res.json(message);
   } catch (error) {
     res.status(400);
@@ -57,4 +56,4 @@ const allMessages = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { sendMessage, allMessages };
+module.exports = { sendMessage, fetchAllMessages };

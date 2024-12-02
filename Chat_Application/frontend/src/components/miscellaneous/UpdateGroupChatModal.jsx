@@ -22,7 +22,7 @@ import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 import axios from "axios";
 import UserListItem from "../UserAvatar/UserListItem";
 
-const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
+const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
   const [groupChatName, setGroupChatName] = useState();
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [search, setSearch] = useState("");
@@ -35,6 +35,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
 
   const toast = useToast();
 
+  // ------------------- Handle Add User ------------------- //
   const handleAddUser = async (user1) => {
     if (selectedChat.users.find((u) => u._id === user1._id)) {
       toast({
@@ -93,6 +94,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
+  // ------------------- Exit From Group(Helper Function) ------------------- //
   const leaveGroup = async () => {
     try {
       setLoading(true);
@@ -129,6 +131,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
+  // ------------------- Remove User(Helper Function) ------------------- //
   const removeUser = async (userId) => {
     try {
       setLoading(true);
@@ -141,6 +144,8 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
 
       setSelectedChat(data);
       setFetchAgain(!fetchAgain);
+      fetchMessages();
+      setLoading(false);
       toast({
         title: "User removed successfully!",
         status: "success",
@@ -148,7 +153,6 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
         isClosable: true,
         position: "bottom-left",
       });
-      setLoading(false);
     } catch (error) {
       toast({
         title: "Error Occurred!",
@@ -163,6 +167,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
+  // ------------------- Disband Group(Helper Function) ------------------- //
   const disbandGroup = async () => {
     try {
       setLoading(true);
@@ -182,6 +187,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
 
       setSelectedChat(null);
       setFetchAgain(!fetchAgain);
+      setLoading(false);
       toast({
         title: "Group disbanded successfully!",
         status: "success",
@@ -189,7 +195,6 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
         isClosable: true,
         position: "bottom-left",
       });
-      setLoading(false);
       onClose();
     } catch (error) {
       toast({
@@ -205,6 +210,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
+  // ------------------- Handle Remove Message ------------------- //
   const handleRemove = async (user1) => {
     // Prevent admin from being removed by others
     if (user1._id === selectedChat.groupAdmin._id) {
@@ -284,6 +290,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
+  // ------------------- Handle Rename ------------------- //
   const handleRename = async () => {
     if (!groupChatName) return;
 
@@ -319,6 +326,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
     setGroupChatName("");
   };
 
+  // ------------------- Handle Search User ------------------- //
   const handleSearch = async (query) => {
     setSearch(query);
     if (!query) {
