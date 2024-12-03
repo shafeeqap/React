@@ -16,3 +16,4 @@ $ Remove-Item -Recurse -Force node_modules
 $ Remove-Item -Force package-lock.json
 
 # you can reinstall your dependencies with: npm install
+# Run the Server with nodemon : npm run server

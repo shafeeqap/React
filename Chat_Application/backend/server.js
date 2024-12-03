@@ -37,7 +37,7 @@ const server = app.listen(PORT, () => {
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.CLINT_URL,
   },
 });
 
@@ -54,10 +54,14 @@ io.on("connection", (socket) => {
     console.log("User Joined Room: " + room);
   });
 
+  // Typing Indicator Logic
+  socket.on("typing", (room) => socket.in(room).emit("typing"));
+  socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
+
   socket.on("new message", (newMessageReceived) => {
     let chat = newMessageReceived.chat;
-    console.log('chat object:', chat);
-    
+    console.log("chat object:", chat);
+
     if (!chat.users) {
       console.log("chat.users not defined");
       return;
@@ -72,5 +76,10 @@ io.on("connection", (socket) => {
       console.log(`Emitting to user: ${user._id}`);
       socket.in(user._id).emit("message received", newMessageReceived);
     });
+  });
+
+  socket.off("setup", () => {
+    console.log("USER DISCONNECTED");
+    socket.leave(userData._id);
   });
 });
