@@ -17,9 +17,7 @@ import axios from "axios";
 import "./styles.css";
 import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";
-import animationData from '../animations/typing.json'
-
-
+import animationData from "../animations/typing.json";
 
 import io from "socket.io-client";
 const ENDPOINT = "http://localhost:8000";
@@ -43,7 +41,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     },
   };
 
-  const { user, selectedChat, setSelectedChat } = ChatState();
+  const { user, selectedChat, setSelectedChat, notification, setNotification } =
+    ChatState();
   const toast = useToast();
 
   // ------------------- Fetch All Messages ------------------- //
@@ -63,7 +62,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         `/api/message/${selectedChat._id}`,
         config
       );
-      console.log("messages", data);
 
       setMessages(data);
       setLoading(false);
@@ -101,7 +99,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           config
         );
 
-        console.log(data);
 
         socket.emit("new message", data);
         setMessages([...messages, data]);
@@ -139,13 +136,19 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     selectedChatCompare = selectedChat;
   }, [selectedChat]);
 
+  console.log(notification, 'Notification');
+  
   useEffect(() => {
     socket.on("message received", (newMessageReceived) => {
       if (
         !selectedChatCompare || // if chat is not selected or doesn't match current chat
         selectedChatCompare._id !== newMessageReceived.chat._id
       ) {
-        // give notification
+        // Notification logic
+        if (!notification.includes(newMessageReceived)) {
+          setNotification([newMessageReceived, ...notification]);
+          setFetchAgain(!fetchAgain)
+        }
       } else {
         setMessages([...messages, newMessageReceived]);
       }
@@ -241,7 +244,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             <FormControl onKeyDown={sendMessage} isRequired mt={3}>
               {isTyping ? (
                 <div>
-                  <Lottie options={defaultOptions} width={70} style={{marginBottom: 15, marginLeft: 0}}/>
+                  <Lottie
+                    options={defaultOptions}
+                    width={70}
+                    style={{ marginBottom: 15, marginLeft: 0 }}
+                  />
                 </div>
               ) : (
                 <></>
