@@ -7,6 +7,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
+  effect,
   Input,
   Menu,
   MenuButton,
@@ -29,7 +30,6 @@ import ChatLoading from "../ChatLoading";
 import UserListItem from "../UserAvatar/UserListItem";
 import { getSender } from "../../config/ChatLogics";
 import NotificationBadge from "react-notification-badge/lib/components/NotificationBadge";
-import { Effect } from "react-notification-badge";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -148,7 +148,7 @@ const SideDrawer = () => {
         <div style={{ display: "flex", gap: "15px" }}>
           <Menu>
             <MenuButton p={"1"} fontSize={"2xl"} m={"1"}>
-              <NotificationBadge count={notification.length} effect={Effect.SCALE} />
+              <NotificationBadge count={notification.length} effect={effect.SCALE} />
               <FaBell />
             </MenuButton>
             <MenuList pl={2}>
