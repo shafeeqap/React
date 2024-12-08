@@ -10,8 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../axiosInstance";
 
 const Login = () => {
   const [email, setEmail] = useState();
@@ -43,7 +43,7 @@ const Login = () => {
         },
       };
 
-      const { data } = await axios.post(
+      const { data } = await axiosInstance.post(
         "/api/user/login",
         { email, password },
         config

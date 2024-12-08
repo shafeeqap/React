@@ -25,10 +25,10 @@ import { FaSearch, FaBell, FaChevronDown } from "react-icons/fa";
 import { ChatState } from "../../Context/ChatProvider";
 import ProfileModal from "./ProfileModal";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import ChatLoading from "../ChatLoading";
 import UserListItem from "../UserAvatar/UserListItem";
-import { getSender, isSameSender } from "../../config/ChatLogics";
+import { getSender } from "../../config/ChatLogics";
+import axiosInstance from "../axiosInstance";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -74,7 +74,7 @@ const SideDrawer = () => {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axiosInstance.get(`/api/user?search=${search}`, config);
 
       setLoading(false);
       setSearchResult(data);
@@ -101,7 +101,7 @@ const SideDrawer = () => {
         },
       };
 
-      const { data } = await axios.post("/api/chat", { userId }, config);
+      const { data } = await axiosInstance.post("/api/chat", { userId }, config);
 
       if (!chats.find((c) => c._id === data._id)) {
         setChats([data, ...data]);

@@ -19,8 +19,8 @@ import {
 import { ChatState } from "../../Context/ChatProvider";
 import { useState } from "react";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
-import axios from "axios";
 import UserListItem from "../UserAvatar/UserListItem";
+import axiosInstance from "../axiosInstance";
 
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
   const [groupChatName, setGroupChatName] = useState();
@@ -68,7 +68,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
 
-      const { data } = await axios.put(
+      const { data } = await axiosInstance.put(
         "/api/chat/groupadd",
         {
           chatId: selectedChat._id,
@@ -100,7 +100,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       setLoading(true);
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
 
-      await axios.put(
+      await axiosInstance.put(
         "/api/chat/leavegroup",
         { chatId: selectedChat._id, userId: user._id },
         config
@@ -136,7 +136,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
     try {
       setLoading(true);
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.put(
+      const { data } = await axiosInstance.put(
         "/api/chat/removeuser",
         { chatId: selectedChat._id, userId },
         config
@@ -177,7 +177,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
 
-      await axios.delete(
+      await axiosInstance.delete(
         "/api/chat/disbandgroup",
         {
           data: { chatId: selectedChat._id },
@@ -303,7 +303,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
 
-      const { data } = await axios.put(
+      const { data } = await axiosInstance.put(
         "/api/chat/rename",
         { chatId: selectedChat._id, chatName: groupChatName },
         config
@@ -342,7 +342,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axiosInstance.get(`/api/user?search=${search}`, config);
       console.log(data, "Search Group Chat");
 
       setLoading(false);

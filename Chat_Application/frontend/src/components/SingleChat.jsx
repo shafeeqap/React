@@ -13,13 +13,13 @@ import { getSender, getSenderFull } from "../config/ChatLogics";
 import ProfileModal from "../components/miscellaneous/ProfileModal";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import "./styles.css";
 import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
 
 import io from "socket.io-client";
+import axiosInstance from "./axiosInstance";
 const ENDPOINT = "http://localhost:8000";
 
 let socket, selectedChatCompare;
@@ -58,7 +58,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
       setLoading(true);
 
-      const { data } = await axios.get(
+      const { data } = await axiosInstance.get(
         `/api/message/${selectedChat._id}`,
         config
       );
@@ -93,7 +93,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         };
         setNewMessage("");
 
-        const { data } = await axios.post(
+        const { data } = await axiosInstance.post(
           "/api/message",
           { content: newMessage, chatId: selectedChat },
           config

@@ -2,11 +2,11 @@ import { Box, Button, Stack, Text, Tooltip, useToast } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
 import { useEffect, useState } from "react";
 import { RiChatNewLine } from "react-icons/ri";
-import axios from "axios";
 import ChatLoading from "./ChatLoading";
 import { getSender } from "../config/ChatLogics.js";
 import GroupChatModal from "./miscellaneous/GroupChatModal.jsx";
 import { HiDotsVertical } from "react-icons/hi";
+import axiosInstance from "./axiosInstance.jsx";
 
 const MyChats = ({fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState();
@@ -22,7 +22,7 @@ const MyChats = ({fetchAgain}) => {
         },
       };
 
-      const { data } = await axios.get("/api/chat", config);
+      const { data } = await axiosInstance.get("/api/chat", config);
       console.log("data", data);
 
       setChats(data);
