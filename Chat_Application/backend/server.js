@@ -16,7 +16,13 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({origin: process.env.CLINT_URL}));
+app.use(
+  cors({
+    origin: process.env.CLINT_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("API is Running Successfully");
