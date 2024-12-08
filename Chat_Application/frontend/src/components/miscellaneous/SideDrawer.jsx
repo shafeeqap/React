@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Badge,
   Box,
   Button,
   Drawer,
@@ -7,7 +8,6 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
-  effect,
   Input,
   Menu,
   MenuButton,
@@ -28,8 +28,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ChatLoading from "../ChatLoading";
 import UserListItem from "../UserAvatar/UserListItem";
-import { getSender } from "../../config/ChatLogics";
-import NotificationBadge from "react-notification-badge/lib/components/NotificationBadge";
+import { getSender, isSameSender } from "../../config/ChatLogics";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -147,10 +146,35 @@ const SideDrawer = () => {
         </Text>
         <div style={{ display: "flex", gap: "15px" }}>
           <Menu>
-            <MenuButton p={"1"} fontSize={"2xl"} m={"1"}>
-              <NotificationBadge count={notification.length} effect={effect.SCALE} />
+            <MenuButton p={"1"} fontSize={"2xl"} m={"1"} position={"relative"}>
+              {notification.length > 0 && (
+                <Badge
+                  position="absolute"
+                  top="-2px"
+                  right="-2px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  borderRadius="full"
+                  bg="red.500"
+                  color="white"
+                  fontWeight="bold"
+                  lineHeight="1"
+                  boxShadow="0 0 5px rgba(0,0,0,0.15)"
+                  maxHeight={'90%'}
+                  maxWidth={'90%'}
+                  fontSize={`${Math.min(
+                    1 + notification.length * 0.03,
+                    0.75
+                  )}rem`}
+                  p={1}
+                >
+                  {notification.length > 99 ? "99+" : notification.length}
+                </Badge>
+              )}
               <FaBell />
             </MenuButton>
+
             <MenuList pl={2}>
               {!notification.length && "No New Messages"}
               {notification.map((notif) => (
