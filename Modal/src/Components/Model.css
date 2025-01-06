@@ -12,6 +12,7 @@
 .model-content{
     width: 500px;
     background-color: white;
+    border-radius: 5px;
 }
 .model-header h3{
     margin: 0;

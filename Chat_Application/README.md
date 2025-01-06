@@ -1,7 +1,29 @@
+Dependencies
+------------
+1. express
+2. express-async-handler
+3. socket.io
+4. jsonwebtoken
+5. mongoose
+6. axios
+7. bcryptjs
+8. chat_application
+9. colors
+10. cors
+11. dotenv 
+12. nodemon
+13. react-notification-badge
+14. react-router-dom
+15. chakra-ui
+16. react-icons
+17. react-scrollable-feed
+18. socket.io-client
+19. react-lottie
+
 Frontend
 --------
 npm create vite
-npm install axios react-router-dom tailwindcss postcss autoprefixer socket.io-client
+npm install axios react-router-dom socket.io-client
 
 Backend
 -------
