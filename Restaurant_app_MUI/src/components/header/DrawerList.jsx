@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import nav_items from "../../constants/navItems";
+import { nav_items } from "../../constants/data";
 
 const DrawerList = ({ onClose, anchor, icons }) => {
   return (

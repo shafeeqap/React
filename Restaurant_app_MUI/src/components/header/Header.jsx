@@ -1,6 +1,6 @@
 import { Box, Drawer } from "@mui/material";
 import NavItem from "../navItem/NavItem";
-import nav_items from "../../constants/navItems";
+import { nav_items } from "../../constants/data";
 import Button from "../button/CustomButton";
 import logoImage from "../../assets/assets-images/assets/seafood-03.png";
 import {
@@ -9,13 +9,13 @@ import {
   NavBarLinksBox,
   NavBarLogo,
 } from "./Header.styled";
+import { useState } from "react";
+import DrawerList from "./DrawerList";
 
 import HomeIcon from "@mui/icons-material/Home";
 import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
 import ContactsIcon from "@mui/icons-material/Contacts";
-import { useState } from "react";
-import DrawerList from "./DrawerList";
 
 const icons = [
   <HomeIcon />,

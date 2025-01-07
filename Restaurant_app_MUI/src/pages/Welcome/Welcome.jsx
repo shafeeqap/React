@@ -5,7 +5,7 @@ import { CustomeBox, Title } from "./Welcome.styled";
 
 const Welcome = () => {
   return (
-    <Box sx={{ backgroundColor: "#E1F5FE", minHeight: "100vh", paddingY: '2rem' }}>
+    <Box sx={{ backgroundColor: "#E1F5FE", minHeight: "100vh", paddingY: '2rem', overflow: "auto" }}>
       <Container>
         <CustomeBox>
           <Box sx={{ flex: "1" }}>

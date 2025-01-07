@@ -1,16 +1,17 @@
 import { Box, Typography } from "@mui/material";
-import ArrowRightAlt from "@mui/icons-material/ArrowRightAlt";
-
 import buyIcon from "../../assets/assets-images/assets/buy_icon.png";
 import rentIcon from "../../assets/assets-images/assets/sell_icon.png";
+import paymentIcon from "../../assets/assets-images/assets/sell_icon.png";
 import CustomButton from "../../components/button/CustomButton";
-import { CustomBox, GuideBox, GuidesBox } from "./Booking.styled";
+import { CustomBox, GuidesBox } from "./Booking.styled";
+import GuideItems from "./GuideItems";
 
-const icons =[buyIcon, rentIcon]
-const guidesTitle=['Order Guides', 'Booking Guides', 'Payment Guides'];
-const instructions=['How to order','How to Book','Payment Methode'];
+const icons = [buyIcon, rentIcon, paymentIcon];
+const guidesTitle = ["Order Guides", "Booking Guides", "Payment Guides"];
+const instructions = ["How to order", "How to Book", "Payment Methode"];
 
 const Booking = () => {
+  
   return (
     <Box
       sx={{
@@ -23,7 +24,7 @@ const Booking = () => {
     >
       <div
         style={{
-          width: "5%",
+          width: "100px",
           height: "5px",
           backgroundColor: "#000339",
           margin: "0 auto",
@@ -50,98 +51,11 @@ const Booking = () => {
       </CustomBox>
 
       <GuidesBox>
-        <GuideBox>
-          <img src={buyIcon} alt="buyIcon" />
-          <Typography
-            variant="body2"
-            sx={{
-              fontWeight: "500",
-              fontSize: "20px",
-              color: "#3B3C45",
-              my: 1,
-            }}
-          >
-            Order Guides
-          </Typography>
-          <Box
-            sx={{
-              cursor: "pointer",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689FF" }}
-            >
-              How to order
-            </Typography>
-            <ArrowRightAlt style={{ color: "#0689FF" }} />
-          </Box>
-        </GuideBox>
-
-        <GuideBox>
-          <img src={rentIcon} alt="buyIcon" />
-          <Typography
-            variant="body2"
-            sx={{
-              fontWeight: "500",
-              fontSize: "20px",
-              color: "#3B3C45",
-              my: 1,
-            }}
-          >
-            Booking Guides
-          </Typography>
-          <Box
-            sx={{
-              cursor: "pointer",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689FF" }}
-            >
-              How to Book
-            </Typography>
-            <ArrowRightAlt style={{ color: "#0689FF" }} />
-          </Box>
-        </GuideBox>
-
-        <GuideBox>
-          <img src={rentIcon} alt="buyIcon" />
-          <Typography
-            variant="body2"
-            sx={{
-              fontWeight: "500",
-              fontSize: "20px",
-              color: "#3B3C45",
-              my: 1,
-            }}
-          >
-            Payment Guides
-          </Typography>
-          <Box
-            sx={{
-              cursor: "pointer",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689FF" }}
-            >
-              Payment Methode
-            </Typography>
-            <ArrowRightAlt style={{ color: "#0689FF" }} />
-          </Box>
-        </GuideBox>
+        <GuideItems
+          icons={icons}
+          guidesTitle={guidesTitle}
+          instructions={instructions}
+        />
       </GuidesBox>
 
       <CustomButton

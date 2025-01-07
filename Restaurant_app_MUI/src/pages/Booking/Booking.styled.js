@@ -24,10 +24,16 @@ export const GuidesBox = styled(Box)(({ theme }) => ({
 
 export const GuideBox = styled(Box)(({ theme }) => ({
   display: "flex",
-  flexDirection: "column",
+  gap: theme.spacing(25),
   alignItems: "center",
   marginTop: theme.spacing(5),
+  [theme.breakpoints.down("md")]: {
+    margin: theme.spacing(2, 0, 2, 0),
+    gap: theme.spacing(15),
+  },
   [theme.breakpoints.down("sm")]: {
     margin: theme.spacing(2, 0, 2, 0),
+    flexDirection: "column",
+    gap: theme.spacing(5),
   },
 }));

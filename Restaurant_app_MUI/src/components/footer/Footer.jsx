@@ -5,16 +5,11 @@ import instagram from "../../assets/assets-images/assets/instagram.png";
 import { CustomeContainer, IconBox } from "./Footer.styled";
 import FooterLinkItems from "./FooterLinkItems";
 import FooterIcons from "./FooterIcons";
+import { featuredItems, overviewItems } from "../../constants/data";
 
 const socialMediaIcons = [fbIcon, twitter, instagram];
 
 const Footer = () => {
-  const featuredItems = ["Guides", "Services", "Contact Us"];
-  const overviewItems = [
-    "Location",
-    "Partnerships",
-    "Terms of use & Privacy Policies",
-  ];
 
   return (
     <Box sx={{ py: 10, backgroundColor: "#0D47A1" }}>
