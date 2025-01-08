@@ -1,26 +1,12 @@
-import { Box, Container, styled, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import CustomCard from "../../components/CustomCard/CustomCard";
 import { cardData } from "../../constants/data";
+import { DishesBox, PropertiesTextBox } from "./Dishes.styled";
 
 const Dishes = () => {
-  const PropertiesTextBox = styled(Box)(({ theme }) => ({
-    [theme.breakpoints.down("md")]: {
-      textAlign: "center",
-    },
-  }));
-
-  const DishesBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: theme.spacing(5),
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-      alignItem: "center",
-    },
-  }));
-
+   
   return (
-    <Box sx={{ mt: 5, backgroundColor: "#F5FAFE", py: 10 }}>
+    <Box sx={{ mt: 1, backgroundColor: "#F5FAFE", py: 10 }}>
       <Container>
         <PropertiesTextBox>
           <Typography
