@@ -13,7 +13,7 @@ export const HeaderWrapper = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   padding: theme.spacing(3),
   backgroundColor: theme.palette.primary.main,
-  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
 }));
 
 export const NavBarLinksBox = styled(Box)(({ theme }) => ({

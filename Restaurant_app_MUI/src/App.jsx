@@ -4,6 +4,8 @@ import Footer from "./components/footer/Footer";
 import Partner from "./pages/Partner/Partner";
 import Booking from "./pages/Booking/Booking";
 import Dishes from "./pages/Dishes/Dishes";
+import Ambience from "./pages/Ambience/Ambience";
+import Delivery from "./pages/Delivery/Delivery";
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
       <Partner />
       <Booking />
       <Dishes />
+      <Ambience />
+      <Delivery />
       <Footer />
     </>
   );
