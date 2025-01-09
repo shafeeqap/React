@@ -82,8 +82,8 @@ CustomCart.propTypes = {
   img: PropTypes.string,
   price: PropTypes.string,
   item: PropTypes.string,
-  likes: PropTypes.string,
-  heart: PropTypes.string,
-  share: PropTypes.string,
+  likes: PropTypes.number,
+  heart: PropTypes.number,
+  share: PropTypes.number,
 };
 export default CustomCart;

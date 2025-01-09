@@ -6,7 +6,7 @@ export const CustomeBox = styled(Box)(({ theme }) => ({
     alignItems:"center",
     padding: "1rem",
     gap: theme.spacing(5),
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -18,7 +18,7 @@ export const CustomeBox = styled(Box)(({ theme }) => ({
     fontSize: "64px",
     color: "#",
     fontWeight: "bold",
-    lineHeight:"1",
+    lineHeight:"0.9",
     margin: theme.spacing(4, 0, 4, 0),
     [theme.breakpoints.down("sm")]: {
       fontSize: "40px",

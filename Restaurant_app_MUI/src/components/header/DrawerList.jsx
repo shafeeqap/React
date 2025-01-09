@@ -7,8 +7,9 @@ import {
   ListItemText,
 } from "@mui/material";
 import { nav_items } from "../../constants/data";
+import PropTypes from "prop-types";
 
-const DrawerList = ({ onClose, anchor, icons }) => {
+const DrawerList = ({ onClose, anchor, icons, navigate }) => {
   return (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
@@ -18,7 +19,7 @@ const DrawerList = ({ onClose, anchor, icons }) => {
     >
       <List>
         {nav_items.map((item, index) => (
-          <ListItem key={index} disablePadding>
+          <ListItem key={index} disablePadding onClick={() => navigate(item.path)}>
             <ListItemButton>
               <ListItemIcon>{icons[index]}</ListItemIcon>
               <ListItemText primary={item.display} />
@@ -30,4 +31,10 @@ const DrawerList = ({ onClose, anchor, icons }) => {
   );
 };
 
+DrawerList.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  anchor: PropTypes.string,
+  icons: PropTypes.arrayOf(PropTypes.node).isRequired,
+  navigate: PropTypes.func.isRequired,
+};
 export default DrawerList;

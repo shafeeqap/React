@@ -1,6 +1,6 @@
 import { ArrowRightAlt } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { GuideBox } from "./Booking.styled";
+import { GuideBox } from "./Services.styled";
 import PropTypes from "prop-types";
 
 const GuideItems = ({ icons, guidesTitle, instructions }) => {
@@ -43,9 +43,9 @@ const GuideItems = ({ icons, guidesTitle, instructions }) => {
 };
 
 GuideItems.propTypes={
-  icons:PropTypes.string,
-  guidesTitle: PropTypes.string,
-  instructions: PropTypes.string,
+  icons:PropTypes.arrayOf(PropTypes.node).isRequired,
+  guidesTitle: PropTypes.arrayOf(PropTypes.node).isRequired,
+  instructions: PropTypes.arrayOf(PropTypes.node).isRequired,
 }
 
 export default GuideItems;

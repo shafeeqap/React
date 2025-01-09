@@ -1,6 +1,6 @@
 import { Box, styled, Typography } from "@mui/material";
 
-export const CustomeBox = styled(Box)(({ theme }) => ({
+export const CustomBox = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(10),
   alignItems: "center",
@@ -16,6 +16,7 @@ export const ImgContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   width: "100%",
   background: "linear-gradient(to right, #E1F5FE, #B3E5FC)",
+  borderRadius: "15px",
   [theme.breakpoints.down("md")]: {
     display: "flex",
     flexDirection: "column",
@@ -23,15 +24,6 @@ export const ImgContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Divider = styled("div")(({ theme }) => ({
-  width: "13%",
-  height: "5px",
-  backgroundColor: "#000339",
-  [theme.breakpoints.down("md")]: {
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-}));
 
 export const TextFlexBox = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(7),

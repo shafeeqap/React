@@ -1,13 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import fbIcon from "../../assets/assets-images/assets/facebook.png";
-import twitter from "../../assets/assets-images/assets/twitter.png";
-import instagram from "../../assets/assets-images/assets/instagram.png";
+
 import { CustomeContainer, IconBox } from "./Footer.styled";
 import FooterLinkItems from "./FooterLinkItems";
 import FooterIcons from "./FooterIcons";
-import { featuredItems, overviewItems } from "../../constants/data";
+import { featuredItems, overviewItems, socialMediaIcons } from "../../constants/data";
 
-const socialMediaIcons = [fbIcon, twitter, instagram];
 
 const Footer = () => {
 

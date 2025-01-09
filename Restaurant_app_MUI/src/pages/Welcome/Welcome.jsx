@@ -5,7 +5,7 @@ import { CustomeBox, Title } from "./Welcome.styled";
 
 const Welcome = () => {
   return (
-    <Box sx={{ backgroundColor: "#E1F5FE", minHeight: "100vh", paddingY: '2rem', overflow: "auto" }}>
+    <Box sx={{ backgroundColor: "#E1F5FE", minHeight: "100vh", paddingY: '2rem' }}>
       <Container>
         <CustomeBox>
           <Box sx={{ flex: "1" }}>
@@ -26,7 +26,7 @@ const Welcome = () => {
             </Title>
             <Typography
               variant="body2"
-              sx={{ fontSize: "18px", color: "#0D47A1", my: 4 }}
+              sx={{ fontSize: "18px", color: "#0D47A1", my: 2 }}
             >
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
               quae. Laboriosam porro totam.

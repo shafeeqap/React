@@ -1,22 +1,17 @@
-import { styled, Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import { NavBarLinkType } from "./Navitem.styled";
 
-const NavItem = ({ children }) => {
-  const NavBarLinkType = styled(Typography)(() => ({
-    fontSize: "15px",
-    color: "#FFFFFF",
-    fontWeight: "bold",
-    cursor: "pointer",
-    "&:hover": {
-      color: "#80DEEA",
-    },
-  }));
-
-  return <NavBarLinkType variant="body2">{children}</NavBarLinkType>;
+const NavItem = ({ children, onClick }) => {
+  return (
+    <NavBarLinkType variant="body2" onClick={onClick}>
+      {children}
+    </NavBarLinkType>
+  );
 };
 
 NavItem.propTypes = {
   children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default NavItem;

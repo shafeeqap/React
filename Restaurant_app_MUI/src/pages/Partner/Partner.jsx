@@ -6,7 +6,7 @@ import { CustomBox, CustomContainer } from "./Partner.styled";
 
 const Partner = () => {
   return (
-    <Box sx={{ mt: 10 }}>
+    <Box sx={{ mt: 15 }}>
       <CustomContainer>
         <CustomBox>
           <img src={logoImage} alt="logo" style={{ minWidth: "30%" }} />

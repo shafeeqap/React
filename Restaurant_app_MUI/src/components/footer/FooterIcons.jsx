@@ -9,8 +9,7 @@ const FooterIcons = ({ children }) => {
     />
   );
 };
-FooterIcons.propTypes +
-  {
+FooterIcons.propTypes = {
     children: PropTypes.node.isRequired,
   };
 export default FooterIcons;

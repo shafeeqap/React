@@ -1,16 +1,12 @@
 import { Box, Typography } from "@mui/material";
-import buyIcon from "../../assets/assets-images/assets/buy_icon.png";
-import rentIcon from "../../assets/assets-images/assets/sell_icon.png";
-import paymentIcon from "../../assets/assets-images/assets/sell_icon.png";
+
 import CustomButton from "../../components/button/CustomButton";
-import { CustomBox, GuidesBox } from "./Booking.styled";
+import { CustomBox, GuidesBox } from "./Services.styled";
 import GuideItems from "./GuideItems";
+import { guidesTitle, serviceIcons, instructions } from "../../constants/data";
 
-const icons = [buyIcon, rentIcon, paymentIcon];
-const guidesTitle = ["Order Guides", "Booking Guides", "Payment Guides"];
-const instructions = ["How to order", "How to Book", "Payment Methode"];
 
-const Booking = () => {
+const Services = () => {
   
   return (
     <Box
@@ -20,6 +16,7 @@ const Booking = () => {
         justifyContent: "center",
         alignItems: "center",
         padding: "40px",
+        mt: 10
       }}
     >
       <div
@@ -52,7 +49,7 @@ const Booking = () => {
 
       <GuidesBox>
         <GuideItems
-          icons={icons}
+          icons={serviceIcons}
           guidesTitle={guidesTitle}
           instructions={instructions}
         />
@@ -68,4 +65,4 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+export default Services;

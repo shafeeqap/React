@@ -1,8 +1,8 @@
 import { Box, styled } from "@mui/material";
 
 export const DishBox = styled(Box)(({ theme }) => ({
-    // borderTopLeftRadius: "10px",
-    // borderTopRightRadius: "10px",
+    borderTopLeftRadius: "10px",
+    borderTopRightRadius: "10px",
     maxWidth: 350,
     margin: theme.spacing(0, 2, 0, 2),
     [theme.breakpoints.down("md")]: {
@@ -10,7 +10,7 @@ export const DishBox = styled(Box)(({ theme }) => ({
     },
     "&:hover": {
       backgroundColor: "#f5f5f5",
-      boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
+      boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
       transform: "scale(1.05)",
       transition: "all 0.3s ease-in-out",
     },

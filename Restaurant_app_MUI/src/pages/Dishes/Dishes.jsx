@@ -6,7 +6,7 @@ import { DishesBox, PropertiesTextBox } from "./Dishes.styled";
 const Dishes = () => {
    
   return (
-    <Box sx={{ mt: 1, backgroundColor: "#F5FAFE", py: 10 }}>
+    <Box sx={{ mt: 8, backgroundColor: "#f0f2f4", py: 5 }}>
       <Container>
         <PropertiesTextBox>
           <Typography

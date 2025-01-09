@@ -1,6 +1,6 @@
 import { Box, Drawer } from "@mui/material";
 import NavItem from "../navItem/NavItem";
-import { nav_items } from "../../constants/data";
+import { icons, nav_items } from "../../constants/data";
 import Button from "../button/CustomButton";
 import logoImage from "../../assets/assets-images/assets/seafood-03.png";
 import {
@@ -12,20 +12,11 @@ import {
 import { useState } from "react";
 import DrawerList from "./DrawerList";
 
-import HomeIcon from "@mui/icons-material/Home";
-import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
-import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
-import ContactsIcon from "@mui/icons-material/Contacts";
-
-const icons = [
-  <HomeIcon />,
-  <FeaturedPlayListIcon />,
-  <MiscellaneousServicesIcon />,
-  <ContactsIcon />,
-];
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState({ left: false });
+  const navigate = useNavigate();
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -65,13 +56,14 @@ const Header = () => {
               onClose={toggleDrawer("left", false)}
               anchor="left"
               icons={icons}
+              navigate={navigate}
             />
           </Drawer>
           <NavBarLogo src={logoImage} alt="Logo-image" />
         </Box>
         <NavBarLinksBox>
           {nav_items.map((item, index) => (
-            <NavItem key={index}>{item.display}</NavItem>
+            <NavItem key={index} onClick={()=>navigate(item.path)}>{item.display}</NavItem>
           ))}
         </NavBarLinksBox>
       </Box>
@@ -81,7 +73,7 @@ const Header = () => {
           alignItems: "center",
           justifyContent: "center",
           gap: "1rem",
-          marginRight: "3rem"
+          marginRight: "3rem",
         }}
       >
         <NavItem>Sign Up</NavItem>

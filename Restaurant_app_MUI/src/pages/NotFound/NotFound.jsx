@@ -1,8 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import { CustomBox } from "./About.styled";
+import { CustomBox } from "./NotFound.styled";
 
-const AboutPage = () => {
-
+const NotFound = () => {
   return (
     <Box
       sx={{
@@ -26,7 +25,7 @@ const AboutPage = () => {
       <Typography
         sx={{ fontSize: "35px", fontWeight: "bold", color: "#00039", my: 3 }}
       >
-        About Us
+        404 : Page Not Found
       </Typography>
       <CustomBox>
         <Typography
@@ -38,12 +37,11 @@ const AboutPage = () => {
             textAlign: "center",
           }}
         >
-          Welcome to our restaurant , where culinary excellence meets warm
-          hospitality.
+          We could not find what you were looking for.
         </Typography>
       </CustomBox>
     </Box>
   );
 };
 
-export default AboutPage;
+export default NotFound;

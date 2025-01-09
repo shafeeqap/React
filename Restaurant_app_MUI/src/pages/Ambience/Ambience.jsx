@@ -1,18 +1,28 @@
-import { Typography, Box, Container, Divider } from "@mui/material";
+import { Typography, Box, Container, styled } from "@mui/material";
 import ambience from "../../assets/assets-images/assets/ambience.png";
 import {
-  CustomeBox,
+  CustomBox,
   ImgContainer,
-  LargeText,
-  SmallText,
-  TextFlexBox,
 } from "./Ambience.styled";
+import TextFlexBoxItems from "./TextFlexBoxItems";
+import { large_Text, small_Text } from "../../constants/data";
+
 
 const Ambience = () => {
+  const Divider = styled("div")(({ theme }) => ({
+    width: "13%",
+    height: "5px",
+    backgroundColor: "#000339",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+  }));
+
   return (
     <Box sx={{ py: 10 }}>
       <Container>
-        <CustomeBox>
+        <CustomBox>
           <ImgContainer>
             <img src={ambience} alt="ambience" style={{ maxWidth: "100%" }} />
           </ImgContainer>
@@ -35,42 +45,8 @@ const Ambience = () => {
               visit is an enchanting rendezvouse with the art of dining.
             </Typography>
           </Box>
-        </CustomeBox>
-
-        <TextFlexBox>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <LargeText>250+</LargeText>
-            <SmallText>Dishes</SmallText>
-          </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <LargeText>300+</LargeText>
-            <SmallText>Trusted Clients</SmallText>
-          </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <LargeText>350+</LargeText>
-            <SmallText>Delivery Per Day</SmallText>
-          </Box>
-        </TextFlexBox>
+        </CustomBox>
+        <TextFlexBoxItems largeText={large_Text} smallText={small_Text} />
       </Container>
     </Box>
   );
