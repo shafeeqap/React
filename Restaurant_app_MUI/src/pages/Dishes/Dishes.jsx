@@ -4,18 +4,23 @@ import { cardData } from "../../constants/data";
 import { DishesBox, PropertiesTextBox } from "./Dishes.styled";
 
 const Dishes = () => {
-   
   return (
-    <Box sx={{ mt: 8, backgroundColor: "#f0f2f4", py: 5 }}>
+    <Box
+      sx={(theme) => ({
+        mt: 8,
+        backgroundColor: theme.palette.mode === "light" ? "#f0f2f4" : "#3C3D37",
+        py: 5,
+      })}
+    >
       <Container>
         <PropertiesTextBox>
           <Typography
-            sx={{
-              color: "#000339",
+            sx={(theme)=>({
+              color: theme.palette.text.primary,
               fontSize: "35px",
               fontWeight: "bold",
               ml: "13px",
-            }}
+            })}
           >
             Featured Dishes
           </Typography>

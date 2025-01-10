@@ -30,13 +30,13 @@ const CustomCart = ({ img, price, item, likes, heart, share }) => {
         >
           <InfoBox>
             <ThumbUpOffAltOutlinedIcon
-              sx={{
-                color: "#84d3f7",
+              sx={(theme)=>({
+                color: theme.palette.mode === "light" ? "#0D47A1" : "#7a7878",
                 cursor: "pointer",
                 "&:hover": {
                   color: "#1e88e5",
                 },
-              }}
+              })}
             />
             <Typography variant="body2" sx={{ mt: 1 }}>
               {likes}
@@ -45,13 +45,13 @@ const CustomCart = ({ img, price, item, likes, heart, share }) => {
 
           <InfoBox>
             <FavoriteBorderOutlinedIcon
-              sx={{
-                color: "#84d3f7",
+              sx={(theme)=>({
+                color: theme.palette.mode === "light" ? "#0D47A1" : "#7a7878",
                 cursor: "pointer",
                 "&:hover": {
                   color: "#1e88e5",
                 },
-              }}
+              })}
             />
             <Typography variant="body2" sx={{ mt: 1 }}>
               {heart}
@@ -60,13 +60,13 @@ const CustomCart = ({ img, price, item, likes, heart, share }) => {
 
           <InfoBox>
             <ShareOutlinedIcon
-              sx={{
-                color: "#84d3f7",
+              sx={(theme)=>({
+                color: theme.palette.mode === "light" ? "#0D47A1" : "#7a7878",
                 cursor: "pointer",
                 "&:hover": {
                   color: "#1e88e5",
                 },
-              }}
+              })}
             />
             <Typography variant="body2" sx={{ mt: 1 }}>
               {share}

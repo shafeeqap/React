@@ -1,15 +1,17 @@
 import { Box, Typography } from "@mui/material";
 
-import { CustomeContainer, IconBox } from "./Footer.styled";
+import { CustomeContainer, FooterWrapper, IconBox } from "./Footer.styled";
 import FooterLinkItems from "./FooterLinkItems";
 import FooterIcons from "./FooterIcons";
-import { featuredItems, overviewItems, socialMediaIcons } from "../../constants/data";
-
+import {
+  featuredItems,
+  overviewItems,
+  socialMediaIcons,
+} from "../../constants/data";
 
 const Footer = () => {
-
   return (
-    <Box sx={{ py: 10, backgroundColor: "#0D47A1" }}>
+    <FooterWrapper>
       <CustomeContainer>
         <Box>
           <Typography
@@ -73,7 +75,7 @@ const Footer = () => {
           </IconBox>
         </Box>
       </CustomeContainer>
-    </Box>
+    </FooterWrapper>
   );
 };
 

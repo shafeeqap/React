@@ -29,12 +29,12 @@ const Ambience = () => {
           <Box>
             <Divider />
             <Typography
-              sx={{
+              sx={(theme)=>({
                 fontSize: "35px",
-                color: "#000339",
+                color: theme.palette.text.primary,
                 fontWeight: "700",
                 my: 3,
-              }}
+              })}
             >
               You&apos;ve found a ambience you love.
             </Typography>

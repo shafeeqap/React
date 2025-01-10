@@ -15,7 +15,7 @@ export const ImgContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  background: "linear-gradient(to right, #E1F5FE, #B3E5FC)",
+  background: theme.customStyles.imageContainerGradient,
   borderRadius: "15px",
   [theme.breakpoints.down("md")]: {
     display: "flex",
@@ -38,7 +38,7 @@ export const TextFlexBox = styled(Box)(({ theme }) => ({
 
 export const LargeText = styled(Typography)(({ theme }) => ({
   fontSize: "64px",
-  color: "#000",
+  color: theme.customStyles.typography,
   fontWeight: "700",
   [theme.breakpoints.down("md")]: {
     fontSize: "32px",

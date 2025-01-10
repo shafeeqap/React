@@ -11,12 +11,12 @@ const GuideItems = ({ icons, guidesTitle, instructions }) => {
           <img src={icon} alt="buyIcon" />
           <Typography
             variant="body2"
-            sx={{
+            sx={(theme)=>({
               fontWeight: "500",
               fontSize: "20px",
-              color: "#3B3C45",
+              color: theme.palette.text.primary,
               my: 1,
-            }}
+            })}
           >
             {guidesTitle[index]}
           </Typography>

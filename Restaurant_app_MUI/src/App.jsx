@@ -1,9 +1,12 @@
+import { ThemeProvider } from "./context/ThemeProvider";
 import LayoutRoutes from "./Routes/LayoutRoutes";
 
 const App = () => {
   return (
     <>
-      <LayoutRoutes />
+      <ThemeProvider>
+        <LayoutRoutes />
+      </ThemeProvider>
     </>
   );
 };

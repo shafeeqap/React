@@ -1,11 +1,15 @@
 import { Box, Typography, Container } from "@mui/material";
 import welcomeImage from "../../assets/assets-images/assets/welcome-2.png";
 import CustomButton from "../../components/button/CustomButton";
-import { CustomeBox, Title } from "./Welcome.styled";
+import { CustomeBox, ImageContainer, Title } from "./Welcome.styled";
 
 const Welcome = () => {
   return (
-    <Box sx={{ backgroundColor: "#E1F5FE", minHeight: "100vh", paddingY: '2rem' }}>
+    <Box sx={(theme) => ({
+      backgroundColor: theme.customStyles.boxBackgroundColor,
+      minHeight: "100vh",
+      paddingY: "2rem",
+    })}>
       <Container>
         <CustomeBox>
           <Box sx={{ flex: "1" }}>
@@ -38,13 +42,13 @@ const Welcome = () => {
               welcomBtn={true}
             />
           </Box>
-          <Box sx={{ flex: "1.25" }}>
+          <ImageContainer >
             <img
               src={welcomeImage}
               alt="welcome"
-              style={{ maxWidth: "100%", marginTop: "2rem", }}
+              style={{ maxWidth: "100%" }}
             />
-          </Box>
+          </ImageContainer>
         </CustomeBox>
       </Container>
     </Box>

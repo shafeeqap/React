@@ -1,4 +1,4 @@
-import { Box, Drawer } from "@mui/material";
+import { Box, Drawer, Typography } from "@mui/material";
 import NavItem from "../navItem/NavItem";
 import { icons, nav_items } from "../../constants/data";
 import Button from "../button/CustomButton";
@@ -13,6 +13,7 @@ import { useState } from "react";
 import DrawerList from "./DrawerList";
 
 import { useNavigate } from "react-router-dom";
+import ToggleThemeButton from "../toggleThemeButton/ToggleThemeButton";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState({ left: false });
@@ -63,7 +64,9 @@ const Header = () => {
         </Box>
         <NavBarLinksBox>
           {nav_items.map((item, index) => (
-            <NavItem key={index} onClick={()=>navigate(item.path)}>{item.display}</NavItem>
+            <NavItem key={index} onClick={() => navigate(item.path)}>
+              {item.display}
+            </NavItem>
           ))}
         </NavBarLinksBox>
       </Box>
@@ -76,6 +79,9 @@ const Header = () => {
           marginRight: "3rem",
         }}
       >
+        <Box>
+          <ToggleThemeButton />
+        </Box>
         <NavItem>Sign Up</NavItem>
         <Button
           backgroundColor={"#FFFFFF"}

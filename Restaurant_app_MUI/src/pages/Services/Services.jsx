@@ -5,9 +5,7 @@ import { CustomBox, GuidesBox } from "./Services.styled";
 import GuideItems from "./GuideItems";
 import { guidesTitle, serviceIcons, instructions } from "../../constants/data";
 
-
 const Services = () => {
-  
   return (
     <Box
       sx={{
@@ -16,7 +14,7 @@ const Services = () => {
         justifyContent: "center",
         alignItems: "center",
         padding: "40px",
-        mt: 10
+        mt: 10,
       }}
     >
       <div
@@ -29,7 +27,12 @@ const Services = () => {
       ></div>
       <Typography
         variant="h3"
-        sx={{ fontSize: "35px", fontWeight: "bold", color: "#000339", my: 3 }}
+        sx={(theme) => ({
+          fontSize: "35px",
+          fontWeight: "bold",
+          color: theme.palette.text.primary,
+          my: 3,
+        })}
       >
         How to Book?
       </Typography>

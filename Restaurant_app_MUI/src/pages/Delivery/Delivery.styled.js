@@ -1,8 +1,7 @@
 import { Box, Container, styled, Typography } from "@mui/material";
 
 export const CustomContainer = styled(Container)(({ theme }) => ({
-  // backgroundColor: "#FED801",
-  background: "linear-gradient(to right, #E1F5FE, #B3E5FC)",
+  background: theme.customStyles.imageContainerGradient,
   height: "416px",
   borderRadius: "15px",
   display: "flex",
