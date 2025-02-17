@@ -41,7 +41,7 @@ const HomePage = () => {
           fontFamily={"work sans"}
           textTransform={"uppercase"}
         >
-          Talk me
+          PulseTalk 
         </Text>
       </Box>
       <Box bg={"white"} w={{ base: "90%", md: "70%", lg: "40%" }} p={4} mb={20}>
