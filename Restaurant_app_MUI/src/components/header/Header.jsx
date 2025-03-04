@@ -1,8 +1,8 @@
-import { Box, Drawer, Typography } from "@mui/material";
+import { Box, Drawer } from "@mui/material";
 import NavItem from "../navItem/NavItem";
 import { icons, nav_items } from "../../constants/data";
 import Button from "../button/CustomButton";
-import logoImage from "../../assets/assets-images/assets/seafood-03.png";
+import logoImage from "../../assets/assets-images/assets/BlueHarvest.png";
 import {
   CustomeMenuIcon,
   HeaderWrapper,

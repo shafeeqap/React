@@ -1,12 +1,11 @@
 import { Box, styled } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-
 export const HeaderWrapper = styled(Box)(({ theme }) => ({
-  position: 'fixed',
+  position: "fixed",
   top: 0,
   left: 0,
-  width: '100%',
+  width: "100%",
   zIndex: 1000,
   display: "flex",
   alignItems: "center",
@@ -28,6 +27,7 @@ export const NavBarLinksBox = styled(Box)(({ theme }) => ({
 
 export const NavBarLogo = styled("img")(({ theme }) => ({
   cursor: "pointer",
+  width: "100px",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
