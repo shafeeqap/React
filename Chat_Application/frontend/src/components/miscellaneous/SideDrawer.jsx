@@ -29,6 +29,7 @@ import ChatLoading from "../ChatLoading";
 import UserListItem from "../UserAvatar/UserListItem";
 import { getSender } from "../../config/ChatLogics";
 import axiosInstance from "../axiosInstance";
+import pulseTalk from '../../assets/PulseTalk-logo.png'
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -142,7 +143,7 @@ const SideDrawer = () => {
           </Button>
         </Tooltip>
         <Text fontSize={"2xl"} fontFamily={"Work sans"}>
-          ChatMe
+        <img src={pulseTalk} alt="" width={60}/> 
         </Text>
         <div style={{ display: "flex", gap: "15px" }}>
           <Menu>

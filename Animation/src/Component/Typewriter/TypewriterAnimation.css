@@ -4,7 +4,8 @@ div{
     align-items: center;
     background-color: black;
     color: white;
-    height: 100vh;
+    overflow-y: auto;
+    min-height: 100vh;
 }
 .container{
     margin-left: 10%;

@@ -1,14 +1,15 @@
-import Student from "./Students.jsx"
+import Parent2 from "./components/childToParent/Parent2";
+import Parent from "./components/Parent";
+import ParentComponent from "./components/ParentComponent";
 
 function App() {
-  return(
-    <>
-      <Student name="Shafeeq" age = {30} isStudents = {false}/>
-      <Student name="Rushdan" age = {10} isStudents = {true}/>
-      <Student />
-
-    </>
+  return (
+    <main>
+      <Parent />
+      <ParentComponent />
+      <Parent2/>
+    </main>
   );
 }
 
-export default App
+export default App;

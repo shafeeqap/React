@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import "../Animation/animation.css";
+import "./animation.css";
 
 const ScrollAnimation = () => {
   useEffect(() => {
@@ -19,7 +19,7 @@ const ScrollAnimation = () => {
       <div className="animation" data-aos="flip-right"></div>
       <h1>Zoom Animation</h1>
       <div className="animation" data-aos="zoom-in"></div>
-      <br /><br />
+      {/* <br /><br /> */}
     </div>
   );
 };

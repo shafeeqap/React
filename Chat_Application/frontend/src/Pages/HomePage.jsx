@@ -12,6 +12,7 @@ import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import pulseTalk from '../assets/PulseTalk-logo.png'
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const HomePage = () => {
           fontFamily={"work sans"}
           textTransform={"uppercase"}
         >
-          PulseTalk 
+          <img src={pulseTalk} alt="" width={60}/> 
         </Text>
       </Box>
       <Box bg={"white"} w={{ base: "90%", md: "70%", lg: "40%" }} p={4} mb={20}>

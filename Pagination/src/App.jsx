@@ -7,7 +7,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const recordsPerPage = 5;
-  const pagesToShow = 10; // Number of pages to show in pagination
+  const pagesToShow = 3; // Number of pages to show in pagination
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,6 +65,7 @@ const App = () => {
           ))}
         </tbody>
       </table>
+      
       <nav>
         <ul className="pagination">
           <li className="page-item">
