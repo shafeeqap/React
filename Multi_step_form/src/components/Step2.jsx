@@ -16,7 +16,7 @@ const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="min-w-min max-w-xl w-full bg-white px-5 py-5 rounded"
+      className="min-w-min max-w-2xl w-full bg-white px-5 py-5 rounded"
     >
       <h2 className="font-semibold">Step 2: Address</h2>
       <div className="mb-4 py-5">

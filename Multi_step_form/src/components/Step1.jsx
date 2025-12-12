@@ -16,7 +16,7 @@ const Step1 = ({ formData, setFormData, nextStep, step }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="min-w-min max-w-xl w-full bg-white px-5 py-5 rounded"
+      className="min-w-min max-w-2xl w-full bg-white px-5 py-5 rounded"
     >
       <h2 className="font-semibold">Step 1: Personal Info</h2>
 
@@ -46,7 +46,10 @@ const Step1 = ({ formData, setFormData, nextStep, step }) => {
         {errors.email && <p className="text-red-600">{errors.email.message}</p>}
       </div>
       {step && (
-        <button type="submit" className="border border-black px-5 py-1 rounded hover:bg-gray-800 hover:text-white transition-colors duration-300">
+        <button
+          type="submit"
+          className="border border-black px-5 py-1 rounded hover:bg-gray-800 hover:text-white transition-colors duration-300"
+        >
           Next
         </button>
       )}

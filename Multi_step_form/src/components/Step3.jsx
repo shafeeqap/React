@@ -1,8 +1,8 @@
 import React from "react";
 
-const Step3 = ({ formData, handleSubmit }) => {
+const Step3 = ({ formData, handleSubmit, prevStep }) => {
   return (
-    <div className="min-w-min max-w-xl w-full bg-white px-5 py-5 rounded">
+    <div className="min-w-min max-w-2xl w-full bg-white px-5 py-5 rounded">
       <h2 className="font-semibold">Step 3: Review & Submit</h2>
 
       <div className="py-5 space-y-2">
@@ -19,13 +19,22 @@ const Step3 = ({ formData, handleSubmit }) => {
           <strong>Country:</strong> {formData.country}
         </p>
       </div>
+      <div className="flex gap-3 justify-between">
+        <button
+          type="button"
+          onClick={prevStep}
+          className="border border-black px-5 py-1 rounded hover:bg-gray-800 hover:text-white transition-colors duration-300"
+        >
+          Previous
+        </button>
 
-      <button
-        className="border border-black px-5 py-1 rounded hover:bg-gray-800 hover:text-white transition-colors duration-300"
-        onClick={handleSubmit}
-      >
-        Submit
-      </button>
+        <button
+          className="border border-black px-5 py-1 rounded hover:bg-gray-800 hover:text-white transition-colors duration-300"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

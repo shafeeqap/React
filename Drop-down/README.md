@@ -10,3 +10,4 @@ Currently, two official plugins are available:
 
 $ Remove-Item -Recurse -Force node_modules
 $ Remove-Item -Force package-lock.json
+$ Reinstall npm install

@@ -25,3 +25,8 @@
     background-color: #007bff; /* Active page background color */
     color: #fff; /* Active page text color */
   }
+  .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  

@@ -1,0 +1,27 @@
+.container {
+    background-color: white;
+    text-align: center;
+    width: 70%;
+    padding: 10px;
+}
+
+/* Styles for screens wider than 576px (small devices, tablets) */
+@media (min-width: 576px) {
+    .container {
+        width: 50%;
+    }
+}
+
+/* Styles for screens wider than 768px (medium devices, larger tablets) */
+@media (min-width: 768px){
+    .container{
+        width: 50%;
+    }
+}
+
+/* Styles for screens wider than 992px (large devices, desktops) */
+@media (min-width: 992px){
+    .container{
+        width: 30%;
+    };
+}

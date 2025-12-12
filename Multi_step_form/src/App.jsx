@@ -3,10 +3,10 @@ import "./App.css";
 import Step1 from "./components/step1";
 import Step2 from "./components/step2";
 import Step3 from "./components/step3";
-import PrograssBar from "./components/prograssBar";
+import PrograssBar from "./components/ProgressBar";
 
 function App() {
-  const [step, setStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState(() => {
     const savedData = localStorage.getItem("formData");
     return savedData
@@ -19,8 +19,8 @@ function App() {
         };
   });
 
-  const nextStep = () => setStep((prev) => prev + 1);
-  const prevStep = () => setStep((prev) => prev - 1);
+  const nextStep = () => setCurrentStep((prev) => prev + 1);
+  const prevStep = () => setCurrentStep((prev) => prev - 1);
 
   const handleSubmit = () => {
     const existingData =
@@ -34,7 +34,7 @@ function App() {
       city: "",
       country: "",
     });
-    setStep(1);
+    setCurrentStep(1);
     alert("Form submitted successfully!");
     console.log(formData);
   };
@@ -45,17 +45,17 @@ function App() {
         <h1 className="font-semibold text-2xl">Multi-Step Form</h1>
       </div>
 
-      <PrograssBar step={step} />
+      <PrograssBar currentStep={currentStep} />
 
-      {step === 1 && (
+      {currentStep === 1 && (
         <Step1
           formData={formData}
           setFormData={setFormData}
           nextStep={nextStep}
-          step={step}
+          step={currentStep}
         />
       )}
-      {step === 2 && (
+      {currentStep === 2 && (
         <Step2
           formData={formData}
           setFormData={setFormData}
@@ -63,7 +63,7 @@ function App() {
           prevStep={prevStep}
         />
       )}
-      {step === 3 && <Step3 formData={formData} handleSubmit={handleSubmit} />}
+      {currentStep === 3 && <Step3 formData={formData} prevStep={prevStep} handleSubmit={handleSubmit} />}
     </div>
   );
 }

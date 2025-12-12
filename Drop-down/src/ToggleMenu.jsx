@@ -9,6 +9,7 @@ import { useRef } from "react";
 
 export default function ToggleMenu() {
   const subMenuRef = useRef(null);
+  
   const toggleMenu = () =>{
     if(subMenuRef.current){
         subMenuRef.current.classList.toggle('hidden')

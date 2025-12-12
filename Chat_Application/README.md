@@ -22,7 +22,7 @@ Dependencies
 
 Frontend
 --------
-npm create vite
+npm create vite@latest
 npm install axios react-router-dom socket.io-client
 
 Backend

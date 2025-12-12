@@ -24,7 +24,10 @@ export default function App() {
             <li>Contact</li>
           </ul>
         </div>
-        <button onClick={toggleMenu} className="cursor-pointer w-8 bg-transparent border-none">
+        <button
+          onClick={toggleMenu}
+          className="cursor-pointer w-8 bg-transparent border-none"
+        >
           <img
             className="w-8 h-8 rounded-full"
             src={profilePic}
