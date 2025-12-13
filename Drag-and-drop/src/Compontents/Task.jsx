@@ -3,7 +3,7 @@ import React from "react";
 
 const Task = ({ task }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    taskId: task.id,
+    id: task.id,
     data: { column: task.status },
   });
 
