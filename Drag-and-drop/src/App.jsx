@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Column } from "./Compontents/Column";
+import { Column } from "./Components/Column";
 import { DndContext } from "@dnd-kit/core";
 
 const App = () => {
@@ -42,8 +42,8 @@ const App = () => {
     const { active, over } = event;
     if (!over || !active) return;
 
-    const sourceColumn = active.id;
-    const destinationColumn = over.id;
+    const sourceColumn = active.id; // Get source column from active id
+    const destinationColumn = over.id; // Get destination column from over id
 
     if (
       !sourceColumn ||
@@ -70,7 +70,7 @@ const App = () => {
             tasks={tasks.filter((task) => task.status === column.id)}
           />
         ))}
-      </div>
+      </div> 
     </DndContext>
   );
 };
