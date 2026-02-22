@@ -31,11 +31,11 @@ npm init -y
 npm install bcrypt cors express jsonwebtoken mongoose multer nodemon path socket.io
 
 
-# If you face any problems during the programme run. 
+If you face any problems during the programme run. 
   You should remove 'node_modules' and 'package-lock.json', then reinstall. 
 
-$ Remove-Item -Recurse -Force node_modules
-$ Remove-Item -Force package-lock.json
+- $ Remove-Item -Recurse -Force node_modules
+- $ Remove-Item -Force package-lock.json
 
-# you can reinstall your dependencies with: npm install
-# Run the Server with nodemon : npm run server
+ you can reinstall your dependencies with: npm install
+ Run the Server with nodemon : npm run server

@@ -57,7 +57,7 @@ const ChatApp = () => {
           />
           <button
             onClick={sendMessage}
-            className="bg-slate-400 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
+            className="bg-slate-400 px-4 py-2 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
           >
             Send
           </button>
